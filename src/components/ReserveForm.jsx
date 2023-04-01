@@ -6,6 +6,7 @@ import 'react-day-picker/dist/style.css';
 import Field from './ui/Field';
 import cn from '../utils/classnames';
 import useOnClickOutside from '../hooks/useOutSideClick';
+import addMonths from '../utils/utils';
 
 const ReserveForm = () => {
   const [form, setForm] = useState({
@@ -99,8 +100,8 @@ const ReserveForm = () => {
         <div ref={returnCalendarRef} className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}>
           <DayPicker
             showOutsideDays
-            fromDate={form.startingDate || today}
-            toMonth={today}
+            fromDate={form.startingDate ?? today}
+            toDate={addMonths(form.startingDate, 1) ?? today}
             selected={form.endingDate}
             fixedWeeks
             onDayClick={(day) => {
