@@ -1,17 +1,21 @@
 import React from 'react';
 import './index.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => (
   <nav className="navbar">
     <h2 className="navbar__title">RentIt</h2>
-    <ul>
-      <li><Link to="cars">Cars</Link></li>
-      <li><Link to="reserve">Reserve</Link></li>
-      <li><Link to="my-reservations">My Reservations</Link></li>
-      <li><Link to="add">Add A Car</Link></li>
-      <li><Link to="delete">Delete A Car</Link></li>
+    <ul className="navbar__links">
+      <li><NavLink to="cars" activeClassName="active">Cars</NavLink></li>
+      <li><NavLink to="reserve" activeClassName="active">Reserve</NavLink></li>
+      <li><NavLink to="my-reservations" activeClassName="active">My Reservations</NavLink></li>
+      <li><NavLink to="add" activeClassName="active">Add A Car</NavLink></li>
+      <li><NavLink to="delete" activeClassName="active">Delete A Car</NavLink></li>
     </ul>
+    <h3 className="navbar__footer">
+      Copyright ©
+      {new Date().getFullYear()}
+    </h3>
   </nav>
 );
 

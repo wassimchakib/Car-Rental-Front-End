@@ -7,13 +7,15 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route exact path="/cars" element={<h1>Cars Page</h1>} />
-          <Route exact path="/reserve" element={<h1>Reserve Page</h1>} />
-          <Route exact path="/my-reservations" element={<h1>My Reservations Page</h1>} />
-          <Route exact path="/add" element={<h1>Add Page</h1>} />
-          <Route exact path="/delete" element={<h1>Delete Page</h1>} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route exact path="/cars" element={<h1>Cars Page</h1>} />
+            <Route exact path="/reserve" element={<h1>Reserve Page</h1>} />
+            <Route exact path="/my-reservations" element={<h1>My Reservations Page</h1>} />
+            <Route exact path="/add" element={<h1>Add Page</h1>} />
+            <Route exact path="/delete" element={<h1>Delete Page</h1>} />
+          </Routes>
+        </div>
       </BrowserRouter>
     </>
   );
