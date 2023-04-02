@@ -1,10 +1,11 @@
 import React from 'react';
 import './index.css';
 import { NavLink } from 'react-router-dom';
+import myIcon from '../../images/icon.png';
 
 const Navbar = () => (
   <nav className="navbar">
-    <h2 className="navbar__title">RentIt</h2>
+    <img className="navbar__title" src={myIcon} alt="Rent It icon" />
     <ul className="navbar__links">
       <li><NavLink to="cars" activeClassName="active">Cars</NavLink></li>
       <li><NavLink to="reserve" activeClassName="active">Reserve</NavLink></li>
