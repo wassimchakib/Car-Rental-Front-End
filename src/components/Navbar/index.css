@@ -8,12 +8,6 @@
 }
 
 .navbar__title {
-  font-size: 3rem;
-  text-align: center;
-  text-decoration: underline;
-  transform: rotate(-30deg);
-  margin-top: 2rem;
-  font-family: 'Fasthand', cursive;
   flex: 1;
 }
 
@@ -30,7 +24,7 @@
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   margin-bottom: 1rem;
   justify-content: center;
   text-align: center;
@@ -47,6 +41,14 @@
   color: #fff;
 }
 
+.nav-btn {
+  padding: 0.5rem;
+  cursor: pointer;
+  background: transparent;
+  font-size: 2rem;
+  display: none;
+}
+
 @media (max-width: 910px) {
   .navbar__links {
     font-size: 1.3rem;
@@ -60,7 +62,36 @@
 }
 
 @media (max-width: 680px) {
-  .navbar__links {
-    font-size: 1rem;
+  .nav-btn {
+    display: block;
+  }
+
+  .navbar__title {
+    display: none;
+  }
+
+  .navbar {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    display: none;
+  }
+
+  .responsive_nav .navbar {
+    display: flex;
+  }
+
+  .responsive_nav .nav-open-btn {
+    display: none;
+  }
+
+  .responsive_nav + .container {
+    display: none;
+  }
+
+  .nav-close-btn {
+    display: flex;
+    justify-content: flex-end;
   }
 }
