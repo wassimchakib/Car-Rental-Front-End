@@ -20,6 +20,6 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  margin-left: 20%;
+#root {
+  display: flex;
 }

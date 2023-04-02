@@ -1,6 +1,4 @@
 .navbar {
-  position: fixed;
-  width: 20%;
   height: 100vh;
   border-right: 1px solid rgba(128, 128, 128, 0.267);
   max-width: 250px;
