@@ -13,10 +13,22 @@ body {
 }
 
 .rdp-day {
+  --tw-text-opacity: 1;
+
   border-radius: 10px !important;
+  color: rgb(30 41 59 / var(--tw-text-opacity)) !important;
+
   @apply hover:bg-slate-300 cursor-pointer;
 }
 
+.rdp-day_today {
+  @apply bg-slate-200 font-normal !important;
+}
+
+.rdp-head_cell {
+  @apply text-slate-700 !important;
+}
+
 .rdp-day_selected {
-  background-color: #62b857 !important;
+  @apply bg-green-500 !important;
 }
