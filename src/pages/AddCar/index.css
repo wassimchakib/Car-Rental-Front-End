@@ -1,21 +1,23 @@
-input,
-textarea {
+.form__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form__container input,
+.form__container textarea {
   width: 100%;
   padding: 0.5rem 1rem;
   border: 1px solid #ddd;
 }
 
-label {
+.form__container label {
   font-size: 1.2rem;
 }
 
-h2 {
+.form__container h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
