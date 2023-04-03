@@ -1,0 +1,13 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+.App {
+  height: 100%;
+}
+
+.background {
+  background-image: url('/public/reservation-page-background.jpg');
+  background-size: cover;
+}
