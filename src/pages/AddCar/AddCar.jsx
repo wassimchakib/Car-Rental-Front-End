@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { FaPlus, FaTrash } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
 import './index.css';
 
 const AddCar = () => {
@@ -8,27 +9,45 @@ const AddCar = () => {
   const [year, setYear] = useState('');
   const [price, setPrice] = useState('');
   const [type, setType] = useState('');
-  const [formInfo, setFormInfo] = useState();
+  const [formInfo, setFormInfo] = useState({});
+  const [images, setImages] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormInfo(
       {
+        ...formInfo,
         name,
         description,
         color,
         year,
         price,
         type,
+        images,
       },
     );
-    console.log(formInfo);
     setName('');
     setDescription('');
     setColor('');
     setYear('');
     setPrice('');
     setType('');
+    setImages([]);
+  };
+
+  useEffect(() => {
+    console.log(formInfo);
+  }, [formInfo]);
+
+  const addImage = () => {
+    const newImages = [...images, ''];
+    setImages(newImages);
+  };
+
+  const handleImage = (e, index) => {
+    const newImages = [...images];
+    newImages[index] = e.target.value;
+    setImages(newImages);
   };
 
   return (
@@ -67,6 +86,23 @@ const AddCar = () => {
             <option value="Micro">Micro</option>
           </select>
         </label>
+        <br />
+        <h2 id="images">
+          Images:
+          <button id="addimage" type="button" onClick={() => addImage()}>
+            <FaPlus />
+          </button>
+        </h2>
+        {
+          images.map((data, i) => (
+            <div className="image__input" key={`image ${i + 1} `}>
+              <input type="text" onChange={(e) => handleImage(e, i)} value={data} placeholder={`image_url_${i + 1}`} />
+              <button type="button">
+                <FaTrash />
+              </button>
+            </div>
+          ))
+        }
         <input type="submit" value="Submit" />
       </form>
     </div>
