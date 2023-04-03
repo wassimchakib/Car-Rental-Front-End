@@ -23,3 +23,13 @@ body {
 #root {
   display: flex;
 }
+
+.container {
+  padding: 1rem;
+}
+
+@media (max-width: 680px) {
+  #root {
+    flex-direction: column;
+  }
+}
