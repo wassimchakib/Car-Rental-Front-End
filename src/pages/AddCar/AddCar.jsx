@@ -1,5 +1,5 @@
 import { FaPlus, FaTrash } from 'react-icons/fa';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 
 const AddCar = () => {
@@ -8,64 +8,62 @@ const AddCar = () => {
     { length: (stop - start + 1) }, (_, i) => start + i,
   );
   const TYPES = ['Sport', 'Pickup', 'Super', 'Coupe', 'Limousine', 'Convertible', 'Micro'];
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [color, setColor] = useState('');
-  const [year, setYear] = useState('');
-  const [price, setPrice] = useState('');
-  const [type, setType] = useState('');
-  const [formInfo, setFormInfo] = useState({});
-  const [images, setImages] = useState([]);
+  const [formInfo, setFormInfo] = useState({
+    name: '',
+    description: '',
+    color: '',
+    year: '2015',
+    price: '',
+    type: 'Sport',
+    images: [],
+  });
   // Form Validation
   const [formValid, setformValid] = useState({
-    nameValid: false,
-    descriptionValid: false,
-    colorValid: false,
-    yearValid: false,
-    priceValid: false,
-    typeValid: false,
-    imageValid: false,
-    formValid: false,
+    nameValid: null,
+    descriptionValid: null,
+    colorValid: null,
+    yearValid: null,
+    priceValid: null,
+    typeValid: null,
+    imageValid: null,
+    formValid: null,
   });
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setFormInfo({ ...formInfo, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormInfo(
       {
-        ...formInfo,
-        name,
-        description,
-        color,
-        year,
-        price,
-        type,
-        images,
+        name: '',
+        description: '',
+        color: '',
+        year: '',
+        price: '',
+        type: '',
+        images: [],
       },
     );
-    setName('');
-    setDescription('');
-    setColor('');
-    setYear('');
-    setPrice('');
-    setType('');
-    setImages([]);
   };
 
   const addImage = () => {
-    const newImages = [...images, ''];
-    setImages(newImages);
+    const newImages = [...formInfo.images, ''];
+    setFormInfo({ ...formInfo, images: newImages });
   };
 
   const deleteImage = (i) => {
-    const newImages = [...images];
+    const newImages = [...formInfo.images];
     newImages.splice(i, 1);
-    setImages(newImages);
+    setFormInfo({ ...formInfo, images: newImages });
   };
 
   const handleImage = (e, index) => {
-    const newImages = [...images];
+    const newImages = [...formInfo.images];
     newImages[index] = e.target.value;
-    setImages(newImages);
+    setFormInfo({ ...formInfo, images: newImages });
   };
 
   return (
@@ -75,29 +73,29 @@ const AddCar = () => {
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">
             Name:
-            <input type="text" required onChange={(e) => setName(e.target.value)} id="name" value={name} />
+            <input type="text" required onChange={(e) => handleInput(e)} id="name" name="name" value={formInfo.name} />
           </label>
           <label htmlFor="description">
             Description:
-            <textarea onChange={(e) => setDescription(e.target.value)} value={description} id="description" maxLength={MAX_LENGTH_DESC} />
+            <textarea onChange={(e) => handleInput(e)} value={formInfo.description} id="description" name="description" maxLength={MAX_LENGTH_DESC} />
           </label>
           <label htmlFor="color">
             Color
-            <input type="text" onChange={(e) => setColor(e.target.value)} value={color} id="color" />
+            <input type="text" onChange={(e) => handleInput(e)} value={formInfo.color} id="color" name="color" />
           </label>
           <label htmlFor="year">
             Year
-            <select id="year" onChange={(e) => setYear(e.target.value)} value={year}>
+            <select id="year" name="year" onChange={(e) => handleInput(e)} value={formInfo.year}>
               {YEARS().map((year) => (<option key={year} value={year}>{year}</option>))}
             </select>
           </label>
           <label htmlFor="price">
             Price
-            <input type="number" required onChange={(e) => setPrice(e.target.value)} value={price} id="price" />
+            <input type="number" required onChange={(e) => handleInput(e)} value={formInfo.price} id="price" name="price" />
           </label>
           <label htmlFor="type">
             Type:
-            <select id="type" onChange={(e) => setType(e.target.value)} value={type}>
+            <select id="type" onChange={(e) => handleInput(e)} value={formInfo.type} name="type">
               {TYPES.map((type) => (<option key={type} value={type}>{type}</option>))}
             </select>
           </label>
@@ -109,7 +107,7 @@ const AddCar = () => {
             </button>
           </h2>
           {
-            images.map((data, i) => (
+            formInfo.images.map((data, i) => (
               <div className="image__input" key={`image ${i + 1} `}>
                 <input type="text" onChange={(e) => handleImage(e, i)} value={data} placeholder={`image_url_${i + 1}`} />
                 <button type="button" onClick={() => deleteImage(i)}>
