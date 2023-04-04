@@ -1,8 +1,8 @@
-import { FaPlus, FaTrash } from 'react-icons/fa';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import Images from '../../components/Images/Images';
 
 const AddCar = () => {
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
@@ -79,23 +79,7 @@ const AddCar = () => {
           <Dropdown name="year" options={YEARS()} onDrop={handleInput} value={formInfo.year} />
           <Input name="price" type="number" onInput={handleInput} value={formInfo.price} />
           <Dropdown name="type" options={TYPES} onDrop={handleInput} value={formInfo.type} />
-          <br />
-          <h2 id="images">
-            Images:
-            <button id="addimage" type="button" onClick={() => addImage()}>
-              <FaPlus />
-            </button>
-          </h2>
-          {
-            formInfo.images.map((data, i) => (
-              <div className="image__input" key={`image ${i + 1} `}>
-                <input type="text" onChange={(e) => handleImage(e, i)} value={data} placeholder={`image_url_${i + 1}`} />
-                <button type="button" onClick={() => deleteImage(i)}>
-                  <FaTrash />
-                </button>
-              </div>
-            ))
-          }
+          <Images form={formInfo} onAdd={addImage} onChange={handleImage} onDelete={deleteImage} />
           <input type="submit" value="Submit" />
         </form>
       </div>

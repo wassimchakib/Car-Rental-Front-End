@@ -14,7 +14,10 @@ const Dropdown = ({
 
 Dropdown.propTypes = {
   name: PropTypes.string.isRequired,
-  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  options: PropTypes.arrayOf(PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])).isRequired,
   onDrop: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
 };
