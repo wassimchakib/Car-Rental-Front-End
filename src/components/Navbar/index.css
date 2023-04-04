@@ -86,7 +86,7 @@
     display: none;
   }
 
-  .responsive_nav + .container {
+  .responsive_nav + .app_container {
     display: none;
   }
 
