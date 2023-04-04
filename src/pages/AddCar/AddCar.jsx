@@ -1,8 +1,13 @@
 import { FaPlus, FaTrash } from 'react-icons/fa';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './index.css';
 
 const AddCar = () => {
+  const MAX_LENGTH_DESC = 1000;
+  const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
+    { length: (stop - start + 1) }, (_, i) => start + i,
+  );
+  const TYPES = ['Sport', 'Pickup', 'Super', 'Coupe', 'Limousine', 'Convertible', 'Micro'];
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('');
@@ -11,6 +16,17 @@ const AddCar = () => {
   const [type, setType] = useState('');
   const [formInfo, setFormInfo] = useState({});
   const [images, setImages] = useState([]);
+  // Form Validation
+  const [formValid, setformValid] = useState({
+    nameValid: false,
+    descriptionValid: false,
+    colorValid: false,
+    yearValid: false,
+    priceValid: false,
+    typeValid: false,
+    imageValid: false,
+    formValid: false,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,10 +50,6 @@ const AddCar = () => {
     setType('');
     setImages([]);
   };
-
-  useEffect(() => {
-    console.log(formInfo);
-  }, [formInfo]);
 
   const addImage = () => {
     const newImages = [...images, ''];
@@ -67,7 +79,7 @@ const AddCar = () => {
           </label>
           <label htmlFor="description">
             Description:
-            <textarea onChange={(e) => setDescription(e.target.value)} value={description} id="description" />
+            <textarea onChange={(e) => setDescription(e.target.value)} value={description} id="description" maxLength={MAX_LENGTH_DESC} />
           </label>
           <label htmlFor="color">
             Color
@@ -75,22 +87,18 @@ const AddCar = () => {
           </label>
           <label htmlFor="year">
             Year
-            <input type="text" required onChange={(e) => setYear(e.target.value)} value={year} id="year" />
+            <select id="year" onChange={(e) => setYear(e.target.value)} value={year}>
+              {YEARS().map((year) => (<option key={year} value={year}>{year}</option>))}
+            </select>
           </label>
           <label htmlFor="price">
             Price
-            <input type="text" required onChange={(e) => setPrice(e.target.value)} value={price} id="price" />
+            <input type="number" required onChange={(e) => setPrice(e.target.value)} value={price} id="price" />
           </label>
           <label htmlFor="type">
             Type:
             <select id="type" onChange={(e) => setType(e.target.value)} value={type}>
-              <option value="Sport">Sport</option>
-              <option value="Pickup">Pickup</option>
-              <option value="Super">Super</option>
-              <option value="Coupe">Coupe</option>
-              <option value="Limousine">Limousine</option>
-              <option value="Convertible">Convertible</option>
-              <option value="Micro">Micro</option>
+              {TYPES.map((type) => (<option key={type} value={type}>{type}</option>))}
             </select>
           </label>
           <br />
