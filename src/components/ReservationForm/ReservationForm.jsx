@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { MdLocationPin } from 'react-icons/md';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import { DayPicker } from 'react-day-picker';
@@ -22,6 +22,7 @@ const ReservationForm = () => {
 
   const pickUpCalendarRef = useRef(null);
   const returnCalendarRef = useRef(null);
+  const formRef = useRef(null);
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
@@ -37,8 +38,25 @@ const ReservationForm = () => {
   useOnClickOutside(pickUpCalendarRef, () => setIsPickUpCalendarOpen(false));
   useOnClickOutside(returnCalendarRef, () => setIsReturnCalendarOpen(false));
 
+  useEffect(() => {
+    if (window.innerWidth < 1024 && isReturnCalendarOpen) {
+      formRef.current.scrollTo({
+        behavior: 'smooth',
+        left: 0,
+        top: returnCalendarRef.current.offsetTop + 130,
+      });
+    }
+    if (window.innerWidth < 1024 && isPickUpCalendarOpen) {
+      formRef.current.scrollTo({
+        behavior: 'smooth',
+        left: 0,
+        top: pickUpCalendarRef.current.offsetTop,
+      });
+    }
+  }, [isPickUpCalendarOpen, isReturnCalendarOpen]);
+
   return (
-    <form onSubmit={handleFormSubmit} className="rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[375px] h-fit bg-[#ffffff5e]">
+    <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
       <label htmlFor="car" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
         <span className="text-xl font-semibold text-gray-600">Select a car</span>
         <select id="car" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
@@ -51,7 +69,7 @@ const ReservationForm = () => {
         className="md:w-[20%] px-2 w-full"
         type="text"
         placeholder="Enter your city or address"
-        label="Where to pick up"
+        label="Address"
         name="city"
         icon={<MdLocationPin size={24} fill="#798497" />}
         onChange={handleInput}
