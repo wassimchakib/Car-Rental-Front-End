@@ -1,7 +1,6 @@
 import { FaPlus, FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import React from 'react';
-import './index.css';
 
 const Images = ({
   form, onAdd, onChange, onDelete,
