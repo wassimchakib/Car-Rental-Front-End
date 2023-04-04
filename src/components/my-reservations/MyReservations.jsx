@@ -1,48 +1,14 @@
 import React from 'react';
-import CarImage from '../../assets/images/Corolla.jpeg';
-import Camry from '../../assets/images/Camry.jpeg';
+import CarCard, { car } from './CarCard';
 
 // StyleSheet
 import './MyReservations.css';
 
 const MyReservations = () => (
   <div className="card-container">
-    <div className="reservation-card">
-      <img className="car_img" src={CarImage} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Camry</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-    <div className="reservation-card">
-      <img className="car_img" src={Camry} alt="" />
-      <h1 className="car-name">Toyota Corolla</h1>
-      <span className="label">Reserved</span>
-    </div>
-
+    {car.map((carItem) => (
+      <CarCard key={carItem.id} id={carItem.id} />
+    ))}
   </div>
 );
 
