@@ -1,13 +1,43 @@
 .car-name {
-  font-size: 30px;
-  color: rgb(30 41 59);
-  padding-left: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  padding-top: 5px;
 }
 
-/* .description {
+.car-name,
+.description,
+.price,
+.dates {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  color: rgb(38, 26, 72);
+}
+
+.description {
   font-size: 14px;
-  padding: 0 10px 0 5px;
-} */
+  color: rgb(134, 144, 161);
+  text-overflow: ellipsis;
+  height: 50px;
+}
+
+.price {
+  font-size: 19px;
+}
+
+.total_price {
+  color: rgb(50, 95, 160);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.daily_price {
+  font-size: 16px;
+}
+
+.dates {
+  font-size: 16px;
+  font-weight: 500;
+}
 
 .card-container {
   display: flex;
@@ -16,11 +46,8 @@
   flex-wrap: wrap;
   gap: 30px;
   margin: 30px;
+  padding-top: 10px;
 }
-
-/* .card-container:last-child {
-  justify-content: flex-start;
-} */
 
 .reservation-card {
   display: flex;
@@ -28,6 +55,7 @@
   background-color: rgb(239 243 248);
   width: 300px;
   height: 400px;
+  overflow: scroll;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -39,7 +67,8 @@
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.car_img {
+.car_img,
+.image-container {
   height: 200px;
   width: 300px;
   border-top-left-radius: 40px;
@@ -54,8 +83,8 @@
   letter-spacing: 2px;
   font-weight: 900;
   position: relative;
-  bottom: 245px;
-  left: 200px;
+  bottom: 195px;
+  left: 209px;
   border-bottom-left-radius: 20px;
   text-align: center;
   font-size: 12px;
@@ -66,5 +95,6 @@
 @media (max-width: 870px) {
   .card-container {
     justify-content: center;
+    padding-top: 30px;
   }
 }
