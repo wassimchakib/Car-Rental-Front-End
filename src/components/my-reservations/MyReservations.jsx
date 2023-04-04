@@ -10,19 +10,37 @@ const MyReservations = () => (
     <div className="reservation-card">
       <img className="car_img" src={CarImage} alt="" />
       <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
     </div>
     <div className="reservation-card">
       <img className="car_img" src={Camry} alt="" />
       <h1 className="car-name">Toyota Camry</h1>
+      <span className="label">Reserved</span>
     </div>
     <div className="reservation-card">
+      <img className="car_img" src={Camry} alt="" />
       <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
     </div>
     <div className="reservation-card">
+      <img className="car_img" src={Camry} alt="" />
       <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
     </div>
     <div className="reservation-card">
+      <img className="car_img" src={Camry} alt="" />
       <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
+    </div>
+    <div className="reservation-card">
+      <img className="car_img" src={Camry} alt="" />
+      <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
+    </div>
+    <div className="reservation-card">
+      <img className="car_img" src={Camry} alt="" />
+      <h1 className="car-name">Toyota Corolla</h1>
+      <span className="label">Reserved</span>
     </div>
 
   </div>
