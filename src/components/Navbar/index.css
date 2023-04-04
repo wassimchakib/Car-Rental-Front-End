@@ -1,5 +1,5 @@
 .navbar {
-  height: 100vh;
+  height: 100%;
   border-right: 1px solid rgba(128, 128, 128, 0.267);
   max-width: 250px;
   display: flex;
@@ -9,6 +9,7 @@
 
 .navbar__title {
   flex: 1;
+  max-height: 200px;
 }
 
 .navbar__links {
