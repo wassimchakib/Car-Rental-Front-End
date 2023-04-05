@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import MyReservations from './components/my-reservations/MyReservations';
+import DeleteCar from './components/delete-car/DeleteCar';
 import Navbar from './components/Navbar/Navbar';
 import AddCar from './pages/AddCar/AddCar';
 
@@ -18,7 +19,7 @@ function App() {
             <Route exact path="/reserve" element={<h1>Reserve Page</h1>} />
             <Route exact path="/my-reservations" element={<MyReservations />} />
             <Route exact path="/add" Component={AddCar} />
-            <Route exact path="/delete" element={<h1>Delete Page</h1>} />
+            <Route exact path="/delete" element={<DeleteCar />} />
           </Routes>
         </div>
       </BrowserRouter>

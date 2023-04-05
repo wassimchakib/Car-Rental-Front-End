@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
 export const car = [
@@ -92,7 +93,7 @@ const CarCard = ({ id }) => {
     <div className="reservation-card">
       <div className="image-container">
         <img className="car_img" src={currentCar.image} alt="" />
-        <span className="label">Reserved</span>
+        {/* <span className="label">Reserved</span> */}
       </div>
       <h1 className="car-name">{currentCar.name}</h1>
       <p className="description">{truncatedText}</p>
@@ -119,6 +120,7 @@ const CarCard = ({ id }) => {
         {' '}
         {currentCar.ending_date}
       </p>
+      <button type="button">Delete</button>
     </div>
   );
 };

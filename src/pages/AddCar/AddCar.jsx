@@ -102,7 +102,6 @@ const AddCar = () => {
         <h2>Add A Car</h2>
         <FormErrors
           formErrors={formInfo.validations.formErrors}
-          isValid={formInfo.validations.isValid}
         />
         <form onSubmit={handleSubmit}>
           <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
