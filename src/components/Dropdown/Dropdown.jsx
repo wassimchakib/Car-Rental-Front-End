@@ -6,6 +6,7 @@ const Dropdown = ({
 }) => (
   <label htmlFor={name}>
     {name}
+    :
     <select id={name} name={name} onChange={(e) => onDrop(e)} value={value}>
       {options.map((item) => (<option key={item} value={item}>{item}</option>))}
     </select>

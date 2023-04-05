@@ -100,6 +100,10 @@ const AddCar = () => {
     <section id="add_car">
       <div className="form__container">
         <h2>Add A Car</h2>
+        <FormErrors
+          formErrors={formInfo.validations.formErrors}
+          isValid={formInfo.validations.isValid}
+        />
         <form onSubmit={handleSubmit}>
           <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
           <Input name="description" type="textarea" onInput={handleInput} value={formInfo.description} isValid={formInfo.validations.descriptionValid} />
@@ -110,10 +114,6 @@ const AddCar = () => {
           <Images form={formInfo} onAdd={addImage} onChange={handleImage} onDelete={deleteImage} />
           <input type="submit" value="Submit" />
         </form>
-        <FormErrors
-          formErrors={formInfo.validations.formErrors}
-          isValid={formInfo.validations.isValid}
-        />
       </div>
     </section>
   );
