@@ -12,7 +12,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        <div className="app_container">
+        <div className="container">
           <Routes>
             <Route exact path="/" element={<Navigate to="/cars" />} />
             <Route exact path="/cars" element={<h1>Cars Page</h1>} />

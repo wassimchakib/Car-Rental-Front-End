@@ -30,22 +30,38 @@ const ReservationForm = () => {
     ev.preventDefault();
 
     if (form.city.trim().length === 0) {
-      enqueueSnackbar('Please enter an address or city', { variant: 'error' });
+      enqueueSnackbar('Please enter an address or city', {
+        variant: 'error',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
       return;
     }
 
     if (!form.startingDate) {
-      enqueueSnackbar('Please select a pick up date', { variant: 'error' });
+      enqueueSnackbar('Please select a pick up date', {
+        variant: 'error',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
       return;
     }
 
     if (!form.endingDate) {
-      enqueueSnackbar('Please select a return date', { variant: 'error' });
+      enqueueSnackbar('Please select a return date', {
+        variant: 'error',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
       return;
     }
 
     if (form.endingDate < form.startingDate) {
-      enqueueSnackbar('Return date must come after the pick date', { variant: 'error' });
+      enqueueSnackbar('Return date must come after the pick date', {
+        variant: 'error',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
       // Uncomment this line after adding redux action to prevent form submission
       // return;
     }
@@ -98,8 +114,8 @@ const ReservationForm = () => {
         className="md:w-[20%] px-2 w-full"
         type="text"
         placeholder="Enter your city"
-        label="Address"
-        id="address"
+        label="City"
+        id="city"
         name="city"
         icon={<MdLocationPin size={24} fill="#798497" />}
         onChange={handleInput}
