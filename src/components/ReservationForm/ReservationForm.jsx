@@ -30,8 +30,8 @@ const ReservationForm = () => {
     ev.preventDefault();
 
     if (form.city.trim().length === 0) {
-      enqueueSnackbar('Please enter an address or city', {
-        variant: 'error',
+      enqueueSnackbar('Please enter a city', {
+        variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
@@ -40,7 +40,7 @@ const ReservationForm = () => {
 
     if (!form.startingDate) {
       enqueueSnackbar('Please select a pick up date', {
-        variant: 'error',
+        variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
@@ -49,7 +49,7 @@ const ReservationForm = () => {
 
     if (!form.endingDate) {
       enqueueSnackbar('Please select a return date', {
-        variant: 'error',
+        variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
@@ -58,7 +58,7 @@ const ReservationForm = () => {
 
     if (form.endingDate < form.startingDate) {
       enqueueSnackbar('Return date must come after the pick date', {
-        variant: 'error',
+        variant: 'errorMessage',
         TransitionProps: { direction: 'down' },
         anchorOrigin: { vertical: 'top', horizontal: 'right' },
       });
