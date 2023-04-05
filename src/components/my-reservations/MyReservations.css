@@ -9,7 +9,7 @@
 .price,
 .dates {
   padding-left: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 5px;
   color: rgb(38, 26, 72);
 }
 
@@ -37,6 +37,7 @@
 .dates {
   font-size: 16px;
   font-weight: 500;
+  padding-bottom: 20px;
 }
 
 .card-container {
@@ -54,8 +55,7 @@
   flex-direction: column;
   background-color: rgb(239 243 248);
   width: 300px;
-  height: 400px;
-  overflow: scroll;
+  height: auto;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
@@ -89,7 +89,7 @@
   letter-spacing: 2px;
   font-weight: 900;
   position: relative;
-  bottom: 195px;
+  bottom: 195.5px;
   left: 209px;
   border-bottom-left-radius: 20px;
   text-align: center;
@@ -102,5 +102,24 @@
   .card-container {
     justify-content: center;
     padding-top: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .reservation-card {
+    width: 270px;
+  }
+
+  .car_img,
+  .image-container {
+    width: 270px;
+  }
+
+  .label {
+    left: 179px;
+  }
+
+  .price {
+    padding-top: 5px;
   }
 }

@@ -85,8 +85,8 @@ const CarCard = ({ id }) => {
   const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
   const totalPrice = daysDiff * currentCar.price;
 
-  const truncatedText = currentCar.description.length > 70
-    ? `${currentCar.description.slice(0, 78)}...`
+  const truncatedText = currentCar.description.length > 60
+    ? `${currentCar.description.slice(0, 65)}...`
     : currentCar.description;
 
   return (
