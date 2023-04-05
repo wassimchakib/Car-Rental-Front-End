@@ -27,3 +27,9 @@ body {
 .container {
   width: 100%;
 }
+
+@media (max-width: 680px) {
+  #root {
+    flex-direction: column;
+  }
+}
