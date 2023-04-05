@@ -18,3 +18,9 @@
 body {
   display: block;
 }
+
+@media (max-width: 680px) {
+  #root {
+    flex-direction: column;
+  }
+}

@@ -1,7 +1,10 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter, Route, Routes, Navigate,
+} from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
+import AddCar from './pages/AddCar/AddCar';
 
 function App() {
   return (
@@ -10,10 +13,11 @@ function App() {
         <Navbar />
         <div className="app_container">
           <Routes>
+            <Route exact path="/" element={<Navigate to="/cars" />} />
             <Route exact path="/cars" element={<h1>Cars Page</h1>} />
             <Route exact path="/reserve" element={<Reserve />} />
             <Route exact path="/my-reservations" element={<h1>My Reservations Page</h1>} />
-            <Route exact path="/add" element={<h1>Add Page</h1>} />
+            <Route exact path="/add" Component={AddCar} />
             <Route exact path="/delete" element={<h1>Delete Page</h1>} />
           </Routes>
         </div>
