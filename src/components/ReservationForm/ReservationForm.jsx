@@ -3,6 +3,7 @@ import { MdLocationPin } from 'react-icons/md';
 import { BsFillCalendarDateFill } from 'react-icons/bs';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { enqueueSnackbar } from 'notistack';
 import Field from '../ui/Field';
 import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
@@ -10,6 +11,7 @@ import addMonths from '../../utils/utils';
 
 const ReservationForm = () => {
   const [form, setForm] = useState({
+    car: '',
     city: '',
     startingDate: null,
     endingDate: null,
@@ -27,13 +29,40 @@ const ReservationForm = () => {
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
 
-    // TODO
-    // make sure that the form is valid
-    // dispatch redux action to save the reservation on the server
+    if (form.city.trim().length === 0) {
+      enqueueSnackbar('Please enter an address or city', { variant: 'error' });
+      return;
+    }
+
+    if (!form.startingDate) {
+      enqueueSnackbar('Please select a pick up date', { variant: 'error' });
+      return;
+    }
+
+    if (!form.endingDate) {
+      enqueueSnackbar('Please select a return date', { variant: 'error' });
+      return;
+    }
+
+    if (form.endingDate < form.startingDate) {
+      enqueueSnackbar('Return date must come after the pick date', { variant: 'error' });
+      // Uncomment this line after adding redux action to prevent form submission
+      // return;
+    }
+
+    // Put the redux action to send the form here
+    // dispatch(submitReservation(form));
   };
 
-  const setSelectedDay = (day, key) => setForm({ ...form, [key]: day });
-  const handleInput = (ev) => setForm({ ...form, [ev.target.name]: ev.target.value });
+  const setSelectedDay = (day, key) => setForm({
+    ...form,
+    [key]: day,
+  });
+
+  const handleInput = (ev) => setForm({
+    ...form,
+    [ev.target.name]: ev.target.value,
+  });
 
   useOnClickOutside(pickUpCalendarRef, () => setIsPickUpCalendarOpen(false));
   useOnClickOutside(returnCalendarRef, () => setIsReturnCalendarOpen(false));
@@ -59,17 +88,18 @@ const ReservationForm = () => {
     <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
       <label htmlFor="car" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
         <span className="text-xl font-semibold text-gray-600">Select a car</span>
-        <select id="car" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
+        <select onSelect={handleInput} name="car" id="car" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
           <option disabled value="">Select a car</option>
-          <option value="1">Kia</option>
-          <option value="2">Mercedes</option>
+          {/* Add list of cars here */}
+          {/* example: <option value="kia">Kia</option> */}
         </select>
       </label>
       <Field
         className="md:w-[20%] px-2 w-full"
         type="text"
-        placeholder="Enter your city or address"
+        placeholder="Enter your city"
         label="Address"
+        id="address"
         name="city"
         icon={<MdLocationPin size={24} fill="#798497" />}
         onChange={handleInput}
@@ -80,6 +110,7 @@ const ReservationForm = () => {
         type="text"
         placeholder="11/12/2021"
         label="Pick up date"
+        id="starting-date"
         name="startingDate"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
         value={form.startingDate?.toLocaleDateString() || ''}
@@ -110,6 +141,7 @@ const ReservationForm = () => {
         type="text"
         placeholder="01/06/2022"
         label="Return date"
+        id="ending-date"
         name="endingDate"
         icon={<BsFillCalendarDateFill size={22} fill="#798497" />}
         value={form.endingDate?.toLocaleDateString() || ''}

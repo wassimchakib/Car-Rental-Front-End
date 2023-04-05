@@ -1,6 +1,11 @@
 #root {
   width: 100vw;
   height: 100vh;
+  display: flex;
+}
+
+.app_container {
+  width: 100%;
 }
 
 .App {
@@ -21,4 +26,51 @@
   .reservation {
     padding: 1rem;
   }
+}
+
+@media screen and (max-width: 350px) {
+  .rdp {
+    @apply text-sm;
+
+    --rdp-cell-size: 35px !important;
+  }
+
+  .rdp-months {
+    width: fit-content !important;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  #root {
+    flex-direction: column;
+  }
+}
+
+.rdp {
+  @apply bg-gray-50 shadow-lg border border-slate-200 rounded-md p-2;
+}
+
+.rdp-caption {
+  @apply text-slate-500;
+}
+
+.rdp-day {
+  --tw-text-opacity: 1;
+
+  border-radius: 10px !important;
+  color: rgb(30 41 59 / var(--tw-text-opacity)) !important;
+
+  @apply hover:bg-slate-300 cursor-pointer;
+}
+
+.rdp-day_today {
+  @apply bg-slate-200 font-normal !important;
+}
+
+.rdp-head_cell {
+  @apply text-slate-700 !important;
+}
+
+.rdp-day_selected {
+  @apply bg-green-500 !important;
 }
