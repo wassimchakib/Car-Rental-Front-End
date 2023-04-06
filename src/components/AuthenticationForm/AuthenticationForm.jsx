@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Input from '../Input/Input';
 import { getToken } from '../../redux/authentication/authenticationSlice';
@@ -47,6 +48,10 @@ const AuthenticationForm = ({ page }) => {
       </span>
     </>
   );
+};
+
+AuthenticationForm.propTypes = {
+  page: PropTypes.string.isRequired,
 };
 
 export default AuthenticationForm;
