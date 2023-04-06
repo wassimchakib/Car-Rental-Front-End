@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import Input from '../Input/Input';
 import { getToken } from '../../redux/authentication/authenticationSlice';
 import FormErrors from '../ui/FormErrors';
-import { register } from '../../redux/registration/registrationSlice';
+import { register, reset } from '../../redux/registration/registrationSlice';
 
-const AuthenticationForm = () => {
+const AuthenticationForm = ({ page }) => {
   const dispatch = useDispatch();
-  const [pageName, setPageName] = useState('Login');
+  const [pageName, setPageName] = useState(page);
 
   const { error: errorLogin } = useSelector((state) => state.authentication);
   const { error: errorRegister, success, message } = useSelector((state) => state.registration);
@@ -28,6 +28,7 @@ const AuthenticationForm = () => {
       setPageName('Register');
     } else {
       setPageName('Login');
+      dispatch(reset());
     }
   };
 

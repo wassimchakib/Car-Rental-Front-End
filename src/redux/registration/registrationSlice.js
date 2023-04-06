@@ -28,6 +28,15 @@ const registrationSlice = createSlice({
     error: '',
     message: '',
   },
+  reducers: {
+    reset: (state) => ({
+      ...state,
+      isLoading: false,
+      success: false,
+      error: '',
+      message: '',
+    }),
+  },
   extraReducers: (builder) => {
     builder.addCase(register.pending, (state) => ({
       ...state,
@@ -49,5 +58,7 @@ const registrationSlice = createSlice({
     }));
   },
 });
+
+export const { reset } = registrationSlice.actions;
 
 export default registrationSlice.reducer;
