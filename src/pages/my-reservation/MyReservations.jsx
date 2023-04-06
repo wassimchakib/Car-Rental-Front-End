@@ -1,5 +1,5 @@
 import React from 'react';
-import CarCard, { car } from './CarCard';
+import CarCard, { car } from '../../components/my-reservations/CarCard';
 
 // StyleSheet
 import './MyReservations.css';

@@ -2,8 +2,8 @@ import {
   BrowserRouter, Route, Routes, Navigate,
 } from 'react-router-dom';
 import './App.css';
-import MyReservations from './components/my-reservations/MyReservations';
-import DeleteCar from './components/delete-car/DeleteCar';
+import MyReservations from './pages/my-reservation/MyReservations';
+import DeleteCar from './pages/delete-car/DeleteCar';
 import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
