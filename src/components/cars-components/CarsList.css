@@ -3,11 +3,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 30% auto;
+  margin: auto;
   width: 100%;
   font-size: 23px;
 }
-
 .card-list {
   display: flex;
   flex-direction: row;
