@@ -23,8 +23,8 @@ const Navbar = () => {
         <img className="navbar__title" src={myIcon} alt="Rent It icon" />
         <ul className="navbar__links">
           <li><NavLink to="cars" className={({ isActive }) => (isActive ? 'active' : '')}>Cars</NavLink></li>
-          <li><NavLink to="reserve" className={({ isActive }) => (isActive ? 'active' : '')}>Reserve</NavLink></li>
-          <li><NavLink to="my-reservations" className={({ isActive }) => (isActive ? 'active' : '')}>My Reservations</NavLink></li>
+          <li><NavLink to="reserve" className={({ isActive }) => (isActive ? 'active' : '')}>Booking</NavLink></li>
+          <li><NavLink to="my-reservations" className={({ isActive }) => (isActive ? 'active' : '')}>Reservations</NavLink></li>
           <li><NavLink to="add" className={({ isActive }) => (isActive ? 'active' : '')}>Add A Car</NavLink></li>
           <li><NavLink to="delete" className={({ isActive }) => (isActive ? 'active' : '')}>Delete A Car</NavLink></li>
         </ul>
