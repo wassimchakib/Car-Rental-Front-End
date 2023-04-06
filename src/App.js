@@ -5,6 +5,7 @@ import './App.css';
 import MyReservations from './components/my-reservations/MyReservations';
 import Navbar from './components/Navbar/Navbar';
 import AddCar from './pages/AddCar/AddCar';
+import CarList from './components/cars-components/CarList';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route exact path="/" element={<Navigate to="/cars" />} />
-            <Route exact path="/cars" element={<h1>Cars Page</h1>} />
+            <Route exact path="/cars" element={<CarList />} />
             <Route exact path="/reserve" element={<h1>Reserve Page</h1>} />
             <Route exact path="/my-reservations" element={<MyReservations />} />
             <Route exact path="/add" Component={AddCar} />
