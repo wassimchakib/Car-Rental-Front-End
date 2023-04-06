@@ -1,3 +1,4 @@
+import { Provider } from 'react-redux';
 import {
   BrowserRouter, Route, Routes, Navigate,
 } from 'react-router-dom';
@@ -6,10 +7,11 @@ import MyReservations from './components/my-reservations/MyReservations';
 import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
+import store from './redux/store';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
         <Navbar />
         <div className="container">
@@ -23,7 +25,7 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 }
 
