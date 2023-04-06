@@ -28,7 +28,8 @@ const authenticationSlice = createSlice({
   initialState: {
     token,
     isLoading: false,
-    response: '',
+    success: false,
+    error: '',
   },
   extraReducers: (builder) => {
     builder.addCase(getToken.pending, (state) => ({

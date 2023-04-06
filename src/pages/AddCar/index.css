@@ -1,5 +1,6 @@
 
-#add_car {
+#add_car,
+#form {
   background: linear-gradient(to right, #97c0027a, #97c00250), url('https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=4000&h=1800');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -84,9 +85,13 @@
 }
 
 .form__errors {
-  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.form__error {
   background: red;
   font-size: 1.2rem;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   color: #fff;
 }

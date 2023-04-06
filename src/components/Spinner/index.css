@@ -65,3 +65,9 @@
     opacity: 100;
   }
 }
+
+@media (max-width: 680px) {
+  .alert {
+    margin-top: 5rem;
+  }
+}

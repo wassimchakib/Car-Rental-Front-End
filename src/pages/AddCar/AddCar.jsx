@@ -1,20 +1,20 @@
-import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+// import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Images from '../../components/Images/Images';
 import FormErrors from '../../components/ui/FormErrors';
-import LoginForm from '../../components/LoginForm/LoginForm';
-import Spinner from '../../components/Spinner/Spinner';
+// import LoginForm from '../../components/LoginForm/LoginForm';
+// import Spinner from '../../components/Spinner/Spinner';
 
 const AddCar = () => {
   // const [token, setToken] = useState('');
-  const { token, isLoading } = useSelector((state) => state.authentication);
+  // const { token, isLoading } = useSelector((state) => state.authentication);
 
-  useEffect(() => {
-    console.log(isLoading, token);
-  }, [token]);
+  // useEffect(() => {
+  //   console.log(isLoading, token);
+  // }, [token]);
 
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
     { length: (stop - start + 1) }, (_, i) => start + i,
@@ -107,7 +107,7 @@ const AddCar = () => {
   };
 
   // Login Form
-  const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
+  // const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
 
   // Car form
   const carForm = () => (
@@ -115,7 +115,6 @@ const AddCar = () => {
       <h2>Add A Car</h2>
       <FormErrors
         formErrors={formInfo.validations.formErrors}
-        isValid={formInfo.validations.isValid}
       />
       <form onSubmit={handleSubmit}>
         <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
@@ -138,7 +137,7 @@ const AddCar = () => {
   return (
     <section id="add_car">
       <div className="form__container">
-        { !token || token.length <= 0 ? loginForm() : carForm() }
+        { carForm() }
       </div>
     </section>
   );
