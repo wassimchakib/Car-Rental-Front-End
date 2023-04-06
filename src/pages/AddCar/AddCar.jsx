@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import './index.css';
 import Input from '../../components/Input/Input';
@@ -5,14 +6,14 @@ import Dropdown from '../../components/Dropdown/Dropdown';
 import Images from '../../components/Images/Images';
 import FormErrors from '../../components/ui/FormErrors';
 import LoginForm from '../../components/LoginForm/LoginForm';
+import Spinner from '../../components/Spinner/Spinner';
 
 const AddCar = () => {
-  const [token, setToken] = useState('');
+  // const [token, setToken] = useState('');
+  const { token, isLoading } = useSelector((state) => state.authentication);
 
   useEffect(() => {
-    const validToken = JSON.parse(localStorage.getItem('token'));
-    setToken(validToken);
-    console.log(token);
+    console.log(isLoading, token);
   }, [token]);
 
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
@@ -105,34 +106,39 @@ const AddCar = () => {
     setFormInfo({ ...formInfo, images: newImages });
   };
 
+  // Login Form
+  const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
+
+  // Car form
+  const carForm = () => (
+    <>
+      <h2>Add A Car</h2>
+      <FormErrors
+        formErrors={formInfo.validations.formErrors}
+        isValid={formInfo.validations.isValid}
+      />
+      <form onSubmit={handleSubmit}>
+        <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
+        <Input name="description" type="textarea" onInput={handleInput} value={formInfo.description} isValid={formInfo.validations.descriptionValid} />
+        <Input name="color" type="text" onInput={handleInput} value={formInfo.color} />
+        <Dropdown name="year" options={YEARS()} onDrop={handleInput} value={formInfo.year} />
+        <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
+        <Dropdown name="type" options={TYPES} onDrop={handleInput} value={formInfo.type} />
+        <Images
+          form={formInfo}
+          onAdd={addImage}
+          onChange={handleImage}
+          onDelete={deleteImage}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </>
+  );
+
   return (
     <section id="add_car">
       <div className="form__container">
-        {!token || token.length <= 0 ? <LoginForm />
-          : (
-            <>
-              <h2>Add A Car</h2>
-              <FormErrors
-                formErrors={formInfo.validations.formErrors}
-                isValid={formInfo.validations.isValid}
-              />
-              <form onSubmit={handleSubmit}>
-                <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
-                <Input name="description" type="textarea" onInput={handleInput} value={formInfo.description} isValid={formInfo.validations.descriptionValid} />
-                <Input name="color" type="text" onInput={handleInput} value={formInfo.color} />
-                <Dropdown name="year" options={YEARS()} onDrop={handleInput} value={formInfo.year} />
-                <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
-                <Dropdown name="type" options={TYPES} onDrop={handleInput} value={formInfo.type} />
-                <Images
-                  form={formInfo}
-                  onAdd={addImage}
-                  onChange={handleImage}
-                  onDelete={deleteImage}
-                />
-                <input type="submit" value="Submit" />
-              </form>
-            </>
-          )}
+        { !token || token.length <= 0 ? loginForm() : carForm() }
       </div>
     </section>
   );

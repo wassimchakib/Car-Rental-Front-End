@@ -3,6 +3,10 @@ import axios from 'axios';
 
 const LOGIN = 'car-rental/authentication/LOGIN';
 
+// Initialize token from local storage
+const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+
+// Method getToken
 export const getToken = createAsyncThunk(LOGIN, async (username, thunkAPI) => {
   const API_URL = 'http://localhost:1800/login';
   const requestOptions = {
@@ -18,9 +22,11 @@ export const getToken = createAsyncThunk(LOGIN, async (username, thunkAPI) => {
   }
 });
 
+// Authentication Slice
 const authenticationSlice = createSlice({
   name: 'authentication',
   initialState: {
+    token,
     isLoading: false,
     response: '',
   },
@@ -31,12 +37,15 @@ const authenticationSlice = createSlice({
       error: '',
     }));
 
-    builder.addCase(getToken.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      success: true,
-      token: action.payload.data.token,
-    }));
+    builder.addCase(getToken.fulfilled, (state, action) => {
+      localStorage.setItem('token', action.payload.data.token);
+      return {
+        ...state,
+        isLoading: false,
+        success: true,
+        token: action.payload.data.token,
+      };
+    });
 
     builder.addCase(getToken.rejected, (state, action) => ({
       ...state,
