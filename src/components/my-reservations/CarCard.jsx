@@ -119,6 +119,7 @@ const CarCard = ({ id }) => {
         {' '}
         {currentCar.ending_date}
       </p>
+      <button className="btn-cancel" type="button">Cancel reservation</button>
     </div>
   );
 };
