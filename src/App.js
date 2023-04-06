@@ -15,7 +15,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route exact path="/" element={<Navigate to="/cars" />} />
-            <Route exact path="/cars" element={<CarsList/>} />
+            <Route exact path="/cars" element={<h1>Car list</h1>} />
             <Route exact path="/reserve" element={<Reserve/>} />
             <Route exact path="/my-reservations" element={<MyReservations />} />
             <Route exact path="/add" Component={AddCar} />
