@@ -1,17 +1,26 @@
 import { Outlet } from 'react-router-dom';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import LoginForm from '../components/LoginForm/LoginForm';
+import AuthenticationForm from '../components/AuthenticationForm/AuthenticationForm';
 import Spinner from '../components/Spinner/Spinner';
 
 const ProtectedRoute = () => {
-  const { token, isLoading } = useSelector((state) => state.authentication);
+  const { token, isLoading: isLoadingLogin } = useSelector((state) => state.authentication);
+  const { isLoading: isLoadingRegister } = useSelector((state) => state.registration);
+  console.log(!isLoadingLogin || !isLoadingRegister);
 
   // Login Form
-  const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
+  const authenticationForm = () => ((!isLoadingLogin && !isLoadingRegister)
+    ? <AuthenticationForm /> : <Spinner />);
 
   return (
-    !token || token.length <= 0 ? loginForm() : <Outlet />
+    !token || token.length <= 0 ? (
+      <section id="form">
+        <div className="form__container">
+          {authenticationForm()}
+        </div>
+      </section>
+    ) : <Outlet />
   );
 };
 

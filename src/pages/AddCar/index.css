@@ -95,3 +95,25 @@
   padding: 0.5rem 1rem;
   color: #fff;
 }
+
+.form__success {
+  background-color: green;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form__action {
+  display: inline-block;
+  width: 100%;
+  text-align: end;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.register__btn {
+  color: blue;
+  text-decoration: underline;
+}
