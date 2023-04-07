@@ -96,9 +96,6 @@ const AddCar = () => {
     setFormInfo({ ...formInfo, images: newImages });
   };
 
-  // Login Form
-  // const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
-
   // Car form
   const carForm = () => (
     <>
