@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Modal from '../delete-car/Modal';
 
 export const car = [
   {
@@ -78,6 +79,8 @@ export const car = [
 
 const CarCard = ({ id }) => {
   const currentCar = car.find((car) => car.id === id);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const startDate = new Date(currentCar.starting_date);
   const endDate = new Date(currentCar.ending_date);
   const timeDiff = endDate.getTime() - startDate.getTime();
@@ -87,6 +90,18 @@ const CarCard = ({ id }) => {
   const truncatedText = currentCar.description.length > 60
     ? `${currentCar.description.slice(0, 65)}...`
     : currentCar.description;
+
+  const handleCancelReservationClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancelClick = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmClick = () => {
+    // Cancel the Reservation
+  };
 
   return (
     <div className="reservation-card">
@@ -119,7 +134,8 @@ const CarCard = ({ id }) => {
         {' '}
         {currentCar.ending_date}
       </p>
-      <button className="btn-cancel" type="button">Cancel reservation</button>
+      <button className="btn-cancel" type="button" onClick={handleCancelReservationClick}>Cancel reservation</button>
+      <Modal isOpen={isModalOpen} onCancel={handleCancelClick} onConfirm={handleConfirmClick} />
     </div>
   );
 };

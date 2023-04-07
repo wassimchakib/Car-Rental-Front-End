@@ -1,6 +1,6 @@
-import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Modal from './Modal';
 
 export const car = [
   {
@@ -71,10 +71,23 @@ export const car = [
 
 const CarCard = ({ id }) => {
   const currentCar = car.find((car) => car.id === id);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const truncatedText = currentCar.description.length > 60
     ? `${currentCar.description.slice(0, 65)}...`
     : currentCar.description;
+
+  const handleDeleteClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCancelClick = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleConfirmClick = () => {
+    // Delete the car
+  };
 
   return (
     <div className="delete-car-card">
@@ -90,7 +103,10 @@ const CarCard = ({ id }) => {
         {' '}
         per day
       </p>
-      <button className="btn-delete" type="button">Delete</button>
+      <button className="btn-delete" type="button" onClick={handleDeleteClick}>
+        Delete
+      </button>
+      <Modal isOpen={isModalOpen} onCancel={handleCancelClick} onConfirm={handleConfirmClick} />
     </div>
   );
 };
