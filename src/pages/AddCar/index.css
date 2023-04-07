@@ -1,4 +1,5 @@
-#add_car {
+#add_car,
+#form {
   background:
     linear-gradient(to right, #97c0027a, #97c00250),
     url("https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=4000&h=1800");
@@ -14,6 +15,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   max-width: 650px;
@@ -84,8 +86,35 @@
 }
 
 .form__errors {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.form__error {
   background: red;
   font-size: 1.2rem;
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   color: #fff;
+}
+
+.form__success {
+  background-color: green;
+  color: #fff;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form__action {
+  display: inline-block;
+  width: 100%;
+  text-align: end;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.register__btn {
+  color: blue;
+  text-decoration: underline;
 }
