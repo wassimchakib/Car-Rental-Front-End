@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Reserve from '../../pages/Reserve/Reserve';
 
@@ -35,7 +35,7 @@ describe('Reserve page', () => {
     const pickUpDateInputField = reservePage.getByPlaceholderText('11/12/2021');
 
     // Open pick up date calendar
-    userEvent.click(pickUpDateInputField);
+    act(() => userEvent.click(pickUpDateInputField));
 
     const calendars = reservePage.container.querySelectorAll('.rdp');
 
@@ -52,7 +52,7 @@ describe('Reserve page', () => {
     const returnDateInputField = reservePage.getByPlaceholderText('01/06/2022');
 
     // Open pick up date calendar
-    userEvent.click(returnDateInputField);
+    act(() => userEvent.click(returnDateInputField));
 
     const calendars = reservePage.container.querySelectorAll('.rdp');
 
