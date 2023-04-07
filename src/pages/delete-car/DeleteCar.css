@@ -1,29 +1,3 @@
-.car-name {
-  font-size: 22px;
-  font-weight: 500;
-  padding-top: 5px;
-}
-
-.car-name,
-.description,
-.price,
-.car-color {
-  padding-left: 10px;
-  margin-bottom: 5px;
-  color: rgb(38, 26, 72);
-}
-
-.description {
-  font-size: 14px;
-  color: rgb(134, 144, 161);
-  text-overflow: ellipsis;
-  height: 50px;
-}
-
-.price {
-  font-size: 19px;
-}
-
 .delete-car-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -45,21 +19,17 @@
   border-bottom-right-radius: 20px;
   margin: 0 auto;
 
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+  --tw-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.1),
     0 4px 6px -4px rgb(0 0 0 / 0.8);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+  --tw-shadow-colored:
+    0 10px 15px -3px var(--tw-shadow-color),
     0 4px 6px -4px var(--tw-shadow-color);
 
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.car_img,
-.image-container {
-  height: 200px;
-  width: 300px;
-  border-top-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 
 .btn-delete {
@@ -75,13 +45,16 @@
 }
 
 .btn-delete:hover {
-  background-color: red;
+  opacity: 80%;
 }
 
 .car-color {
   font-size: 18px;
   font-weight: 400;
   margin-top: -10px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+  color: rgb(38, 26, 72);
 }
 
 @media (max-width: 1500px) {
@@ -105,14 +78,5 @@
 @media (max-width: 320px) {
   .delete-car-card {
     width: 270px;
-  }
-
-  .car_img,
-  .image-container {
-    width: 270px;
-  }
-
-  .price {
-    padding-top: 5px;
   }
 }

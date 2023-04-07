@@ -3,6 +3,7 @@ import CarCard, { car } from '../../components/delete-car/DeleteCarCard';
 
 // StyleSheet
 import './DeleteCar.css';
+import '../my-reservation/MyReservations.css';
 
 const DeleteCar = () => (
   <div className="delete-car-container">

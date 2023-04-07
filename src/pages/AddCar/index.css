@@ -1,5 +1,6 @@
 #add_car {
-  background: linear-gradient(to right, #97c0027a, #97c00250),
+  background:
+    linear-gradient(to right, #97c0027a, #97c00250),
     url("https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=4000&h=1800");
   background-repeat: no-repeat;
   background-size: 100% 100%;
