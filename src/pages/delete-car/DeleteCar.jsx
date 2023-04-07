@@ -7,9 +7,11 @@ import '../my-reservation/MyReservations.css';
 
 const DeleteCar = () => (
   <div className="delete-car-container">
-    {car.map((carItem) => (
-      <CarCard key={carItem.id} id={carItem.id} />
-    ))}
+    {car.length > 0 ? (
+      car.map((carItem) => <CarCard key={carItem.id} id={carItem.id} />)
+    ) : (
+      <p className="empty-msg">There are no cars on this page.</p>
+    )}
   </div>
 );
 

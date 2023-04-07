@@ -93,7 +93,6 @@ const CarCard = ({ id }) => {
     <div className="delete-car-card">
       <div className="image-container">
         <img className="car_img" src={currentCar.image} alt="" />
-        {/* <span className="label">Reserved</span> */}
       </div>
       <h1 className="car-name">{currentCar.name}</h1>
       <p className="car-color">{currentCar.color}</p>
