@@ -109,7 +109,7 @@
 .form__action {
   display: inline-block;
   width: 100%;
-  text-align: end;
+  text-align: center;
   font-size: 1rem;
   margin-top: 1rem;
 }

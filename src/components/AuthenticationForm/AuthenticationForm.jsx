@@ -39,12 +39,12 @@ const AuthenticationForm = ({ page }) => {
       { success && pageName !== 'Login' && (<p className="form__success">{message}</p>) }
       <form onSubmit={handleSubmit}>
         <Input name="username" type="text" onInput={setUsername} />
-        <input type="submit" value={pageName === 'Login' ? 'login' : 'register'} />
+        <input type="submit" value={pageName === 'Login' ? 'Login' : 'Register'} />
       </form>
       <span className="form__action">
         {pageName === 'Login' ? 'Not registered?' : 'Already registered?'}
         {' '}
-        <button type="button" className="register__btn" onClick={handleClick}>{pageName === 'Login' ? 'register' : 'login'}</button>
+        <button type="button" className="register__btn" onClick={handleClick}>{pageName === 'Login' ? 'Register' : 'Login'}</button>
       </span>
     </>
   );
