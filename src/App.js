@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
 import CarList from './components/cars-components/CarList';
-import CarDetails from './components/cars-components/CarDetails';
+// import CarDetails from './components/cars-components/CarDetails';
 
 function App() {
   // const CarDetails = null;

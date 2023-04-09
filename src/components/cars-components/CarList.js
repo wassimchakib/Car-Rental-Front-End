@@ -27,6 +27,7 @@ const CarList = ({ itemsPerPage }) => {
 
   return (
     <>
+      <h1 className='carListTitle'>Your Luxury Car for your Comfort</h1>
       <Container>
         <CarCard currentItems={currentItems} />
       </Container>
