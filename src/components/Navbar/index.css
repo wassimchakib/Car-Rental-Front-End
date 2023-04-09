@@ -53,6 +53,19 @@
   display: none;
 }
 
+.nav__logout {
+  background-color: red;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 2rem;
+}
+
+.nav__logout:hover {
+  background-color: rgba(255, 0, 0, 0.521);
+}
+
 @media (max-width: 910px) {
   .navbar__links {
     font-size: 1.3rem;
