@@ -5,8 +5,7 @@ export const car = [
     name: 'Toyota Camry',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 53,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'Apr 10, 2023',
+    isRented: true,
   },
   {
     id: 2,
@@ -14,8 +13,7 @@ export const car = [
     name: 'Mercedes-Benz S-class',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 90,
-    starting_date: 'Apr 20, 2023',
-    ending_date: 'May 01, 2023',
+    isRented: true,
   },
   {
     id: 3,
@@ -23,8 +21,7 @@ export const car = [
     name: 'BMW 7 Series',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 70,
-    starting_date: 'Apr 08, 2023',
-    ending_date: 'Apr 12, 2023',
+    isRented: false,
   },
   {
     id: 4,
@@ -32,8 +29,7 @@ export const car = [
     name: 'Tesla Model X',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 105,
-    starting_date: 'Apr 10, 2023',
-    ending_date: 'Apr 25, 2023',
+    isRented: true,
   },
   {
     id: 5,
@@ -41,8 +37,7 @@ export const car = [
     name: 'Tesla Model Y',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 85,
-    starting_date: 'Apr 20, 2023',
-    ending_date: 'May 05, 2023',
+    isRented: false,
   },
   {
     id: 6,
@@ -50,8 +45,7 @@ export const car = [
     name: 'Kia K5',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 50,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'May 10, 2023',
+    isRented: false,
   },
   {
     id: 7,
@@ -59,8 +53,7 @@ export const car = [
     name: 'Hyundai Sonata',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 45,
-    starting_date: 'Apr 07, 2023',
-    ending_date: 'Apr 10, 2023',
+    isRented: false,
   },
   {
     id: 8,
@@ -68,7 +61,6 @@ export const car = [
     name: 'Mercedes-Benz G-Class',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 230,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'Apr 15, 2023',
+    isRented: false,
   },
 ];

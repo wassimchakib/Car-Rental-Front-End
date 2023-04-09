@@ -6,28 +6,6 @@ import CarCard from './CarCard';
 import { car } from './cars';
 import './CarsList.css';
 
-// const items = [...Array(100).keys()];
-
-// const ItemsCard = ({ currentItems }) =>(
-//   <>
-//     <div className='cardGrid'>
-//       {
-//         currentItems && currentItems.map((item) => (
-//           <div className='cardCol'>
-//             <img className='carImg' src={item.image} alt={item.name}/>
-//             <div className='carText'>
-//               <h3 className='carTitle'>{item.name}</h3>
-//               <p className='carIntro'>{
-//                   item.description.length > 50 ? `${item.description.slice(0, 55)}...` : item.description
-//               }</p>
-//             </div>
-//           </div>
-//         ))
-//       }
-//     </div>
-//   </> 
-// );
-
 const CarList = ({ itemsPerPage }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
