@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../delete-car/Modal';
+import Modal from './Modal';
 
 export const car = [
   {
@@ -9,8 +9,7 @@ export const car = [
     name: 'Toyota Camry',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 53,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'Apr 10, 2023',
+    color: 'Dark blue',
   },
   {
     id: 2,
@@ -18,8 +17,7 @@ export const car = [
     name: 'Mercedes-Benz S-class',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 90,
-    starting_date: 'Apr 20, 2023',
-    ending_date: 'May 01, 2023',
+    color: 'Black',
   },
   {
     id: 3,
@@ -27,8 +25,7 @@ export const car = [
     name: 'BMW 7 Series',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 70,
-    starting_date: 'Apr 08, 2023',
-    ending_date: 'Apr 12, 2023',
+    color: 'Blue',
   },
   {
     id: 4,
@@ -36,8 +33,7 @@ export const car = [
     name: 'Tesla Model X',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 105,
-    starting_date: 'Apr 10, 2023',
-    ending_date: 'Apr 25, 2023',
+    color: 'Grey',
   },
   {
     id: 5,
@@ -45,8 +41,7 @@ export const car = [
     name: 'Tesla Model Y',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 85,
-    starting_date: 'Apr 20, 2023',
-    ending_date: 'May 05, 2023',
+    color: 'White',
   },
   {
     id: 6,
@@ -54,8 +49,7 @@ export const car = [
     name: 'Kia K5',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 50,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'May 10, 2023',
+    color: 'Space grey',
   },
   {
     id: 7,
@@ -63,8 +57,7 @@ export const car = [
     name: 'Hyundai Sonata',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 45,
-    starting_date: 'Apr 07, 2023',
-    ending_date: 'Apr 10, 2023',
+    color: 'Red',
   },
   {
     id: 8,
@@ -72,8 +65,7 @@ export const car = [
     name: 'Mercedes-Benz G-Class',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     price: 230,
-    starting_date: 'Apr 05, 2023',
-    ending_date: 'Apr 15, 2023',
+    color: 'White',
   },
 ];
 
@@ -81,17 +73,11 @@ const CarCard = ({ id }) => {
   const currentCar = car.find((car) => car.id === id);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const startDate = new Date(currentCar.starting_date);
-  const endDate = new Date(currentCar.ending_date);
-  const timeDiff = endDate.getTime() - startDate.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
-  const totalPrice = daysDiff * currentCar.price;
-
   const truncatedText = currentCar.description.length > 60
     ? `${currentCar.description.slice(0, 65)}...`
     : currentCar.description;
 
-  const handleCancelReservationClick = () => {
+  const handleDeleteClick = () => {
     setIsModalOpen(true);
   };
 
@@ -100,41 +86,25 @@ const CarCard = ({ id }) => {
   };
 
   const handleConfirmClick = () => {
-    // Cancel the Reservation
+    // Delete the car
   };
 
   return (
-    <div className="reservation-card">
+    <div className="delete-car-card">
       <div className="image-container">
         <img className="car_img" src={currentCar.image} alt="" />
-        <span className="label">Reserved</span>
       </div>
       <h1 className="car-name">{currentCar.name}</h1>
+      <p className="car-color">{currentCar.color}</p>
       <p className="description">{truncatedText}</p>
       <p className="price">
-
-        <span className="total_price">
-          $
-          {totalPrice}
-        </span>
+        {currentCar.price}
         {' '}
-        |
-        {' '}
-        <span className="daily_price">
-          $
-          {currentCar.price}
-          {' '}
-          per day
-        </span>
+        per day
       </p>
-      <p className="dates">
-        {currentCar.starting_date}
-        {' '}
-        -
-        {' '}
-        {currentCar.ending_date}
-      </p>
-      <button className="btn-cancel" type="button" onClick={handleCancelReservationClick}>Cancel reservation</button>
+      <button className="btn-delete" type="button" onClick={handleDeleteClick}>
+        Delete
+      </button>
       <Modal isOpen={isModalOpen} onCancel={handleCancelClick} onConfirm={handleConfirmClick} />
     </div>
   );

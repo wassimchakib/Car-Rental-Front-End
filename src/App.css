@@ -35,4 +35,8 @@ body {
   #root {
     flex-direction: column;
   }
+
+  .form__container {
+    min-height: 90vh;
+  }
 }
