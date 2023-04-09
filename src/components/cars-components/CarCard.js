@@ -1,16 +1,13 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './CarsList.css';
 
 const CarCard = ({ currentItems }) => {
-  console.log('currentItems: ', currentItems);
-  const [selectedCarId, setSelectedCarId] = useState(null);
   
-  // handle click event on car card
-  const handleCarClick = (id) => {
-    console.log('you click me', id)
-    // setSelectedCarId(id);
-    // console.log('selectedCarId: ', selectedCarId);
+  // handle navigation click event on car card
+  const navigate = useNavigate();
+  const handleNavigate = (id) => {
+    console.log('id: ', id);
+    navigate(`/cars/${id}`);
   };
 
   return (
@@ -21,7 +18,7 @@ const CarCard = ({ currentItems }) => {
             <div 
               className='cardCol' 
               key={item.id} 
-              onClick={() => handleCarClick(item.id)}
+              onClick={() => handleNavigate(item.id)}
             >
               <img className='carImg' src={item.image} alt={item.name}/>
               <div className='carText'>

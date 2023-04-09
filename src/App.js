@@ -1,5 +1,5 @@
 import {
-  BrowserRouter, Route, Routes, Navigate,
+  BrowserRouter, Route, Routes,
 } from 'react-router-dom';
 import './App.css';
 import MyReservations from './components/my-reservations/MyReservations';
@@ -7,18 +7,16 @@ import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
 import CarList from './components/cars-components/CarList';
-// import CarDetails from './components/cars-components/CarDetails';
+import CarDetails from './components/cars-components/CarDetails';
 
 function App() {
-  // const CarDetails = null;
-
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <div className="container">
           <Routes>
-            {/* <Route path="/cars/:id" component={CarDetails} /> */}
+            <Route exact path="/cars/:id" element={<CarDetails />} />
             <Route exact path="/" element={<h1>car</h1>} />
             <Route exact path="/cars" element={<CarList itemsPerPage={6} />} />
             <Route exact path="/reserve" element={<Reserve />} />

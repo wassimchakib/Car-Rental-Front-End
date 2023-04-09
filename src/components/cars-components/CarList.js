@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactPaginate from 'react-paginate';
 import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
