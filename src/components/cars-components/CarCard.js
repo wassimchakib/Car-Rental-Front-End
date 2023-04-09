@@ -1,13 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './CarsList.css';
 
 const CarCard = ({ currentItems }) => {
+  console.log('currentItems: ', currentItems);
   const [selectedCarId, setSelectedCarId] = useState(null);
   
   // handle click event on car card
   const handleCarClick = (id) => {
-    setSelectedCarId(id);
-    console.log('selectedCarId: ', selectedCarId);
+    console.log('you click me', id)
+    // setSelectedCarId(id);
+    // console.log('selectedCarId: ', selectedCarId);
   };
 
   return (
@@ -28,9 +31,11 @@ const CarCard = ({ currentItems }) => {
                 }</p>
               </div>
             </div>
+            
           ))
         }
       </div>
+
     </> 
   )
 };

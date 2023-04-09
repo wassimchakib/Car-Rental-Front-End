@@ -10,7 +10,6 @@ const CarList = ({ itemsPerPage }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const [selectedCarId, setSelectedCarId] = useState(null);
 
   useEffect(() => {
     // fetch data from API later
@@ -32,6 +31,7 @@ const CarList = ({ itemsPerPage }) => {
         <CarCard currentItems={currentItems} />
       </Container>
 
+      {/* pagination */}
       <div className='paginationContainer'>
         <ReactPaginate
           nextLabel="next >"
@@ -54,6 +54,7 @@ const CarList = ({ itemsPerPage }) => {
           renderOnZeroPageCount={null}
         />
       </div>
+
     </>
   )
 }
