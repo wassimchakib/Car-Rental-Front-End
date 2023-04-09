@@ -1,12 +1,14 @@
 .pagination {
   position: absolute;
-  bottom: 0;
+  bottom: -10;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 20px;
+  align-items: center;
+  padding: 6px;
   box-sizing: border-box;
-  width: 100%;
+  background-color: rgb(233, 233, 233);
+  width: 90%;
 }	
 
 .page-item {
