@@ -1,24 +1,26 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useState, useEffect } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import ReactPaginate from 'react-paginate';
 import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
-import { car } from './cars';
+import { items } from './cars';
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+  const [selectedCarId, setSelectedCarId] = useState(null);
 
   useEffect(() => {
     // fetch data from API later
 
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(car.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(car.length / itemsPerPage));
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
   }, [itemOffset, itemsPerPage]);
 
+  // pagination next/prev handler
   const handlePageClick = (event) => {
     const newOffset = event.selected * itemsPerPage % items.length;
     setItemOffset(newOffset);

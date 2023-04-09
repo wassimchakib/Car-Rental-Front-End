@@ -1,4 +1,4 @@
-export const car = [
+export const items = [
   {
     id: 1,
     image: 'https://hips.hearstapps.com/hmg-prod/images/c-005-1500x1000-1652713137.jpg?crop=0.919xw:0.775xh;0.0651xw,0.103xh&resize=2048:*',
