@@ -33,7 +33,7 @@ export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
     },
   };
   try {
-    return await axios.post(API_URL, { car }, requestOptions);
+    return await axios.post(API_URL, car, requestOptions);
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }
@@ -41,7 +41,7 @@ export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
 
 // Method Delete Car
 export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/cars';
+  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
@@ -50,7 +50,7 @@ export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
     },
   };
   try {
-    return await axios.delete(API_URL, { id }, requestOptions);
+    return await axios.delete(API_URL, requestOptions);
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }

@@ -26,6 +26,7 @@ export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkA
 export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservation, thunkAPI) => {
   const API_URL = 'http://localhost:1800/api/v1/reservations';
   const token = localStorage.getItem('token');
+  console.log(reservation);
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -33,7 +34,7 @@ export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservati
     },
   };
   try {
-    return await axios.post(API_URL, { reservation }, requestOptions);
+    return await axios.post(API_URL, reservation, requestOptions);
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }
@@ -41,7 +42,7 @@ export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservati
 
 // Method DeleteReservation
 export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/reservations';
+  const API_URL = `http://localhost:1800/api/v1/reservations/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
@@ -50,7 +51,7 @@ export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id,
     },
   };
   try {
-    return await axios.delete(API_URL, { id }, requestOptions);
+    return await axios.delete(API_URL, requestOptions);
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }

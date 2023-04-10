@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import Modal from './Modal';
+import { deleteCar, getCars } from '../../redux/car/carSlice';
 
 const CarCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const truncatedText = item.description.length > 60
     ? `${item.description.slice(0, 65)}...`
@@ -18,13 +21,15 @@ const CarCard = ({ item }) => {
   };
 
   const handleConfirmClick = () => {
-    // Delete the car
+    dispatch(deleteCar(item.id));
+    dispatch(getCars());
+    setIsModalOpen(false);
   };
 
   return (
     <div className="delete-car-card">
       <div className="image-container">
-        <img className="car_img" src={item.images[0].url} alt="" />
+        <img className="car_img" src={item.images.length > 0 && item.images[0].url} alt="" />
       </div>
       <h1 className="car-name">{item.name}</h1>
       <p className="car-color">{item.color}</p>
