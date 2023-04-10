@@ -66,7 +66,7 @@ const carSlice = createSlice({
     list: '',
   },
   extraReducers: (builder) => {
-    // Get Reservations
+    // Get Cars
     builder.addCase(getCars.pending, (state) => ({
       ...state,
       isLoading: true,
@@ -77,7 +77,7 @@ const carSlice = createSlice({
       ...state,
       isLoading: false,
       success: true,
-      list: action.payload.data.data.reservations,
+      list: action.payload.data.data.cars,
     }));
 
     builder.addCase(getCars.rejected, (state, action) => ({
@@ -86,7 +86,7 @@ const carSlice = createSlice({
       error: action.payload,
     }));
 
-    // Add Reservation
+    // Add Car
 
     builder.addCase(addCar.pending, (state) => ({
       ...state,
@@ -107,7 +107,7 @@ const carSlice = createSlice({
       errors: action.payload.data.errors,
     }));
 
-    // Delete Reservation
+    // Delete Car
 
     builder.addCase(deleteCar.pending, (state) => ({
       ...state,

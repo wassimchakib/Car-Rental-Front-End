@@ -6,13 +6,14 @@ import CarCard from '../../components/delete-car/DeleteCarCard';
 import './DeleteCar.css';
 import '../my-reservation/MyReservations.css';
 import Spinner from '../../components/Spinner/Spinner';
+import { getCars } from '../../redux/car/carSlice';
 
 const DeleteCar = () => {
-  const { list, isLoading } = useSelector((state) => state.reservation);
+  const { list, isLoading } = useSelector((state) => state.car);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getListOfCars());
+    dispatch(getCars());
   }, [dispatch]);
 
   const showListOfCars = () => (list.map(

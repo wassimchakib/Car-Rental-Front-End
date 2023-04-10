@@ -56,7 +56,7 @@ export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id,
   }
 });
 
-// Registration Slice
+// Reservation Slice
 const reservationSlice = createSlice({
   name: 'reservation',
   initialState: {

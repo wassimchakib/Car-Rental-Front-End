@@ -5,9 +5,9 @@ import Modal from './Modal';
 const CarCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const truncatedText = item.car.description.length > 60
-    ? `${item.car.description.slice(0, 65)}...`
-    : item.car.description;
+  const truncatedText = item.description.length > 60
+    ? `${item.description.slice(0, 65)}...`
+    : item.description;
 
   const handleDeleteClick = () => {
     setIsModalOpen(true);
@@ -24,13 +24,13 @@ const CarCard = ({ item }) => {
   return (
     <div className="delete-car-card">
       <div className="image-container">
-        <img className="car_img" src={item.car.images[0]} alt="" />
+        <img className="car_img" src={item.images[0].url} alt="" />
       </div>
-      <h1 className="car-name">{item.car.name}</h1>
-      <p className="car-color">{item.car.color}</p>
+      <h1 className="car-name">{item.name}</h1>
+      <p className="car-color">{item.color}</p>
       <p className="description">{truncatedText}</p>
       <p className="price">
-        {item.car.price}
+        {item.price}
         {' '}
         per day
       </p>
@@ -45,20 +45,15 @@ const CarCard = ({ item }) => {
 CarCard.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number,
-    city: PropTypes.string,
-    ending_date: PropTypes.string,
-    starting_date: PropTypes.string,
-    car: PropTypes.shape({
-      price: PropTypes.number,
-      name: PropTypes.string,
-      color: PropTypes.string,
-      description: PropTypes.string,
-      images: PropTypes.arrayOf(
-        PropTypes.shape({
-          url: PropTypes.string,
-        }),
-      ),
-    }),
+    price: PropTypes.number,
+    name: PropTypes.string,
+    color: PropTypes.string,
+    description: PropTypes.string,
+    images: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    ),
   }).isRequired,
 };
 

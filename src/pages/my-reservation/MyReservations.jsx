@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 // StyleSheet
 import './MyReservations.css';
 import { getReservations } from '../../redux/reservation/reservationSlice';
-import CarCard from '../../components/delete-car/DeleteCarCard';
+
 import Spinner from '../../components/Spinner/Spinner';
+import CarCard from '../../components/my-reservations/CarCard';
 
 const MyReservations = () => {
   const { list, isLoading } = useSelector((state) => state.reservation);
