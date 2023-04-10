@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Images from '../../components/Images/Images';
 import FormErrors from '../../components/ui/FormErrors';
+import { addCar } from '../../redux/car/carSlice';
 
 const AddCar = () => {
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
@@ -16,7 +18,7 @@ const AddCar = () => {
     color: '',
     year: '2015',
     price: '',
-    type: 'Sport',
+    car_type: 'Sport',
     images: [],
     validations: {
       nameValid: null,
@@ -29,6 +31,7 @@ const AddCar = () => {
     },
   };
   const [formInfo, setFormInfo] = useState(formInfoState);
+  const dispatch = useDispatch();
 
   const validateField = (fieldName, fieldValue) => {
     const { formErrors } = formInfo.validations;
@@ -74,6 +77,9 @@ const AddCar = () => {
     if (!formInfo.validations.isValid) {
       return;
     }
+    const newCar = { ...formInfo };
+    delete newCar.validations;
+    dispatch(addCar(newCar));
     setFormInfo(
       formInfoState,
     );
