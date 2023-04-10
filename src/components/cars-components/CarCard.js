@@ -17,16 +17,19 @@ const CarCard = ({ currentItems }) => {
             <div
               className="cardCol"
               key={item.id}
+              role="button"
+              tabIndex={0}
               onClick={() => handleNavigate(item.id)}
             >
               <img className="carImg" src={item.image} alt={item.name} />
               <div className="carText">
                 <h3 className="carTitle">{item.name}</h3>
-                <p className="carIntro">{
-                  item.description.length > 50
-                    ? `${item.description.slice(0, 55)}...`
-                    : item.description
-                }
+                <p className="carIntro">
+                  {
+                    item.description.length > 50
+                      ? `${item.description.slice(0, 55)}...`
+                      : item.description
+                  }
                 </p>
               </div>
             </div>
