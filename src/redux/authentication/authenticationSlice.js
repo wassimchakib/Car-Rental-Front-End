@@ -4,7 +4,7 @@ import axios from 'axios';
 const LOGIN = 'car-rental/authentication/LOGIN';
 
 // Initialize token from local storage
-const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
+const token = localStorage.getItem('token') || null;
 
 // Method getToken
 export const getToken = createAsyncThunk(LOGIN, async (username, thunkAPI) => {

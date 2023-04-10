@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../delete-car/Modal';
+import Modal from './Modal';
 
 const CarCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const startDate = new Date(item.starting_date);
-  const endDate = new Date(item.ending_date);
-
-  const timeDiff = endDate.getTime() - startDate.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
-  const totalPrice = daysDiff * item.car.price;
 
   const truncatedText = item.car.description.length > 60
     ? `${item.car.description.slice(0, 65)}...`
     : item.car.description;
 
-  const handleCancelReservationClick = () => {
+  const handleDeleteClick = () => {
     setIsModalOpen(true);
   };
 
@@ -25,41 +18,25 @@ const CarCard = ({ item }) => {
   };
 
   const handleConfirmClick = () => {
-    // Cancel the Reservation
+    // Delete the car
   };
 
   return (
-    <div className="reservation-card">
+    <div className="delete-car-card">
       <div className="image-container">
-        <img className="car_img" src={item.car.images[0].url} alt="" />
-        <span className="label">Reserved</span>
+        <img className="car_img" src={item.car.images[0]} alt="" />
       </div>
       <h1 className="car-name">{item.car.name}</h1>
+      <p className="car-color">{item.car.color}</p>
       <p className="description">{truncatedText}</p>
       <p className="price">
-
-        <span className="total_price">
-          $
-          {totalPrice}
-        </span>
+        {item.car.price}
         {' '}
-        |
-        {' '}
-        <span className="daily_price">
-          $
-          {item.car.price}
-          {' '}
-          per day
-        </span>
+        per day
       </p>
-      <p className="dates">
-        {item.starting_date}
-        {' '}
-        -
-        {' '}
-        {item.ending_date}
-      </p>
-      <button className="btn-cancel" type="button" onClick={handleCancelReservationClick}>Cancel reservation</button>
+      <button className="btn-delete" type="button" onClick={handleDeleteClick}>
+        Delete
+      </button>
       <Modal isOpen={isModalOpen} onCancel={handleCancelClick} onConfirm={handleConfirmClick} />
     </div>
   );
@@ -74,6 +51,7 @@ CarCard.propTypes = {
     car: PropTypes.shape({
       price: PropTypes.number,
       name: PropTypes.string,
+      color: PropTypes.string,
       description: PropTypes.string,
       images: PropTypes.arrayOf(
         PropTypes.shape({

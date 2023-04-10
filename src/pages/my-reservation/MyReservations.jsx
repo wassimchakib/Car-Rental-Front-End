@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import CarCard from './CarCard';
-import Spinner from '../Spinner/Spinner';
 // StyleSheet
 import './MyReservations.css';
 import { getReservations } from '../../redux/reservation/reservationSlice';
+import CarCard from '../../components/delete-car/DeleteCarCard';
+import Spinner from '../../components/Spinner/Spinner';
 
 const MyReservations = () => {
   const { list, isLoading } = useSelector((state) => state.reservation);

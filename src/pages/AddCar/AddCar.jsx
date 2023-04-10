@@ -1,21 +1,11 @@
-// import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Images from '../../components/Images/Images';
 import FormErrors from '../../components/ui/FormErrors';
-// import LoginForm from '../../components/LoginForm/LoginForm';
-// import Spinner from '../../components/Spinner/Spinner';
 
 const AddCar = () => {
-  // const [token, setToken] = useState('');
-  // const { token, isLoading } = useSelector((state) => state.authentication);
-
-  // useEffect(() => {
-  //   console.log(isLoading, token);
-  // }, [token]);
-
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
     { length: (stop - start + 1) }, (_, i) => start + i,
   );
@@ -105,9 +95,6 @@ const AddCar = () => {
     newImages[index] = e.target.value;
     setFormInfo({ ...formInfo, images: newImages });
   };
-
-  // Login Form
-  // const loginForm = () => (!isLoading ? <LoginForm /> : <Spinner />);
 
   // Car form
   const carForm = () => (
