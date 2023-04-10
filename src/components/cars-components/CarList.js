@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
@@ -7,6 +8,10 @@ import items from './cars';
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.car.cars);
+  const status = useSelector((state) => state.car.status);
+  const error = useSelector((state) => state.car.error);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
