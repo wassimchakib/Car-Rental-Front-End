@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { items } from './cars';
+import items from './cars';
 import './CarsList.css';
 
 const CarDetails = () => {
@@ -10,11 +10,11 @@ const CarDetails = () => {
   return (
     <>
       <h1 className="carTitle">
-        Car Details 
+        Car Details
         {car.name}
       </h1>
     </>
   );
-}
+};
 
 export default CarDetails;

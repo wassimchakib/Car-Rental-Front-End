@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
-import { items } from './cars'
+import items from './cars';
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
@@ -27,7 +27,7 @@ const CarList = ({ itemsPerPage }) => {
 
   return (
     <>
-      <h1 className='carListTitle'>Your Luxury Car for your Comfort</h1>
+      <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
       <Container>
         <CarCard currentItems={currentItems} />
       </Container>

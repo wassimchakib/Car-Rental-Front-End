@@ -53,7 +53,7 @@
 
 .cardCol:hover {
   cursor: pointer;
-  box-shadow: 0px 3px 13px 0 rgba(118, 240, 115, 0.75);
+  box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
   -webkit-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
   -moz-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
 }
