@@ -96,24 +96,35 @@ const AddCar = () => {
     setFormInfo({ ...formInfo, images: newImages });
   };
 
+  // Car form
+  const carForm = () => (
+    <>
+      <h2>Add A Car</h2>
+      <FormErrors
+        formErrors={formInfo.validations.formErrors}
+      />
+      <form onSubmit={handleSubmit}>
+        <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
+        <Input name="description" type="textarea" onInput={handleInput} value={formInfo.description} isValid={formInfo.validations.descriptionValid} />
+        <Input name="color" type="text" onInput={handleInput} value={formInfo.color} />
+        <Dropdown name="year" options={YEARS()} onDrop={handleInput} value={formInfo.year} />
+        <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
+        <Dropdown name="type" options={TYPES} onDrop={handleInput} value={formInfo.type} />
+        <Images
+          form={formInfo}
+          onAdd={addImage}
+          onChange={handleImage}
+          onDelete={deleteImage}
+        />
+        <input type="submit" value="Submit" />
+      </form>
+    </>
+  );
+
   return (
     <section id="add_car">
       <div className="form__container">
-        <h2>Add A Car</h2>
-        <FormErrors
-          formErrors={formInfo.validations.formErrors}
-          isValid={formInfo.validations.isValid}
-        />
-        <form onSubmit={handleSubmit}>
-          <Input name="name" type="text" onInput={handleInput} value={formInfo.name} isValid={formInfo.validations.nameValid} />
-          <Input name="description" type="textarea" onInput={handleInput} value={formInfo.description} isValid={formInfo.validations.descriptionValid} />
-          <Input name="color" type="text" onInput={handleInput} value={formInfo.color} />
-          <Dropdown name="year" options={YEARS()} onDrop={handleInput} value={formInfo.year} />
-          <Input name="price" type="number" onInput={handleInput} value={formInfo.price} isValid={formInfo.validations.priceValid} />
-          <Dropdown name="type" options={TYPES} onDrop={handleInput} value={formInfo.type} />
-          <Images form={formInfo} onAdd={addImage} onChange={handleImage} onDelete={deleteImage} />
-          <input type="submit" value="Submit" />
-        </form>
+        { carForm() }
       </div>
     </section>
   );
