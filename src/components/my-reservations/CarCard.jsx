@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../delete-car/Modal';
+import { deleteReservation, getReservations } from '../../redux/reservation/reservationSlice';
 
 const CarCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +18,8 @@ const CarCard = ({ item }) => {
     ? `${item.car.description.slice(0, 65)}...`
     : item.car.description;
 
+  const dispatch = useDispatch();
+
   const handleCancelReservationClick = () => {
     setIsModalOpen(true);
   };
@@ -25,13 +29,14 @@ const CarCard = ({ item }) => {
   };
 
   const handleConfirmClick = () => {
-    // Cancel the Reservation
+    dispatch(deleteReservation(item.id));
+    dispatch(getReservations());
   };
 
   return (
     <div className="reservation-card">
       <div className="image-container">
-        <img className="car_img" src={item.car.images[0].url} alt="" />
+        <img className="car_img" src={item.car.images.length > 0 && item.car.images[0].url} alt="" />
         <span className="label">Reserved</span>
       </div>
       <h1 className="car-name">{item.car.name}</h1>

@@ -26,7 +26,6 @@ export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkA
 export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservation, thunkAPI) => {
   const API_URL = 'http://localhost:1800/api/v1/reservations';
   const token = localStorage.getItem('token');
-  console.log(reservation);
   const requestOptions = {
     method: 'POST',
     headers: {
