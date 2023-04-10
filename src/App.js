@@ -21,8 +21,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route element={<ProtectedRoute />}>
-              {/* <Route exact path="/" element={<Navigate to="/cars" />} /> */}
-              <Route exact path="/" element={<h1>cars home</h1>} />
+              <Route exact path="/" element={<Navigate to="/cars" />} />
               <Route exact path="/cars/:id" element={<CarDetails />} />
               <Route exact path="/cars" element={<CarList itemsPerPage={6} />} />
               <Route exact path="/reserve" element={<Reserve />} />

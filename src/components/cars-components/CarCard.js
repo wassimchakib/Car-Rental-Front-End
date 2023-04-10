@@ -14,7 +14,7 @@ const CarCard = ({ currentItems }) => {
       <div className="cardGrid">
         {
           currentItems && currentItems.map((item) => (
-            <div 
+            <div
               className="cardCol"
               key={item.id}
               onClick={() => handleNavigate(item.id)}
@@ -23,10 +23,10 @@ const CarCard = ({ currentItems }) => {
               <div className="carText">
                 <h3 className="carTitle">{item.name}</h3>
                 <p className="carIntro">{
-                    item.description.length > 50 
+                  item.description.length > 50
                     ? `${item.description.slice(0, 55)}...`
                     : item.description
-                  }
+                }
                 </p>
               </div>
             </div>
