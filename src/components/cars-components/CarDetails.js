@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { items } from './cars';
-import './CarsList.css'
+import './CarsList.css';
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -10,13 +9,12 @@ const CarDetails = () => {
 
   return (
     <>
-      <h1 className='carTitle'>Car Details {car.name} </h1>
+      <h1 className="carTitle">
+        Car Details 
+        {car.name}
+      </h1>
     </>
   );
-}
-
-CarDetails.propTypes = {
-  id: PropTypes.number.isRequired,
 }
 
 export default CarDetails;

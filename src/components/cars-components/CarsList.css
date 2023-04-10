@@ -5,14 +5,14 @@
   margin: 6px 90px;
   letter-spacing: 1px;
   text-align: center;
-  background-color: #98BF11;
+  background-color: #98bf11;
   color: white;
   border-radius: 5px;
 }
 
 .pagination {
   position: absolute;
-  bottom: -10;
+  bottom: -10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,39 +23,39 @@
   box-sizing: border-box;
   background-color: rgb(233, 233, 233);
   width: 80%;
-}	
+}
 
 .page-item {
-  border: 1px solid #98BF11;
+  border: 1px solid #98bf11;
   padding: 6px 12px;
   font-size: 18px;
   font-weight: 600;
-  color: #98BF11;
+  color: #98bf11;
 }
 
 .page-item.active {
-  background-color: #98BF11;
+  background-color: #98bf11;
   color: white;
 }
 
 .page-item:hover {
-  background-color: #98BF11;
+  background-color: #98bf11;
   color: white;
 }
 
 .cardGrid {
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-content: center ;
+  justify-content: center;
   gap: 24px;
   padding: 26px;
 }
 
 .cardCol:hover {
- cursor: pointer;
- box-shadow: 0px 3px 13px 0px rgba(118,240,115,0.75);
--webkit-box-shadow: 0px 3px 13px 0px rgba(118,240,115,0.75);
--moz-box-shadow: 0px 3px 13px 0px rgba(118,240,115,0.75);
+  cursor: pointer;
+  box-shadow: 0px 3px 13px 0 rgba(118, 240, 115, 0.75);
+  -webkit-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
+  -moz-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
 }
 
 .carImg {
@@ -69,7 +69,7 @@
 }
 
 .carText {
-  border: 1px solid #98BF11;
+  border: 1px solid #98bf11;
   padding: 6px;
   height: 100px;
   border-bottom-left-radius: 5px;

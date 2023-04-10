@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
+import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
-import { items } from './cars';
+import { items } from './cars'
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
@@ -20,7 +21,7 @@ const CarList = ({ itemsPerPage }) => {
 
   // pagination next/prev handler
   const handlePageClick = (event) => {
-    const newOffset = event.selected * itemsPerPage % items.length;
+    const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
   };
 
@@ -32,7 +33,7 @@ const CarList = ({ itemsPerPage }) => {
       </Container>
 
       {/* pagination */}
-      <div className='paginationContainer'>
+      <div className="paginationContainer">
         <ReactPaginate
           nextLabel="next >"
           onPageChange={handlePageClick}
@@ -56,7 +57,11 @@ const CarList = ({ itemsPerPage }) => {
       </div>
 
     </>
-  )
-}
+  );
+};
 
-export default CarList
+CarList.propTypes = {
+  itemsPerPage: PropTypes.number.isRequired,
+};
+
+export default CarList;
