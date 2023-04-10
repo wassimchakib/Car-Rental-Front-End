@@ -42,7 +42,14 @@ const CarCard = ({ currentItems }) => {
 };
 
 CarCard.propTypes = {
-  currentItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default CarCard;
