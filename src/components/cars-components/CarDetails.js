@@ -1,4 +1,4 @@
-import { useNavigate, useParams} from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import items from './cars';
 import './CarsList.css';
 
@@ -9,8 +9,8 @@ const CarDetails = () => {
 
   const navigate = useNavigate();
 
-  const handleClick = (id) => {
-    navigate(`/reserve`)
+  const handleClick = () => {
+    navigate("/reserve");
   };
 
   return (
@@ -40,8 +40,8 @@ const CarDetails = () => {
             {car.description}
           </p>
 
-          <button 
-            type="button" 
+          <button
+            type="button"
             className="reserveBtn"
             onClick={() => handleClick(12)}
           >
