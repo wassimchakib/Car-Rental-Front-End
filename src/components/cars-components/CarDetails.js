@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import items from './cars';
 import './CarsList.css';
 
@@ -7,39 +7,46 @@ const CarDetails = () => {
 
   const car = items.find((item) => item.id === Number(id));
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/reserve');
+  };
+
   return (
     <>
-      <h1 className="carTitle">
-        Car Details
-        {car.name}
-      </h1>
-
       <div className="carDetails">
         <div className="carDetailsImage">
           <img src={car.image} alt={car.name} />
         </div>
         <div className="carDetailsInfo">
-          <h2>
+          <h2 className="carTitle">
             Name:
-            {car.name}
+            <span>{car.name}</span>
           </h2>
-          <p>
+          <p className="title">
             Price:
-            {car.price}
+            <span>{car.price}</span>
           </p>
-          <p>
+          <p className="title">
             Color:
-            {car.color}
+            <span>{car.color}</span>
           </p>
-          <p>
+          <p className="title">
             Year:
-            {car.year}
+            <span>{car.year}</span>
           </p>
-          <p>
+          <p className="carDescription">
             {car.description}
           </p>
 
-          <button type="button" className="btn btn-primary">Reserve Car</button>
+          <button
+            type="button"
+            className="reserveBtn"
+            onClick={() => handleClick(12)}
+          >
+            Reserve Car
+          </button>
         </div>
       </div>
     </>
