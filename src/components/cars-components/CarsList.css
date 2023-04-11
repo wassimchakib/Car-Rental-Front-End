@@ -95,7 +95,6 @@
 }
 
 .carDetails {
-  height: 70vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -112,7 +111,7 @@
 
 .carDetailsInfo {
   margin-left: 28px;
-  width: 50%;
+  width: 60%;
 }
 
 .title {
@@ -158,5 +157,15 @@
   .carListTitle {
     margin: 6px 22px;
     padding: 8px;
+  }
+
+  .carDetails {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .carDetailsInfo {
+    margin-left: 0;
+    width: 100%;
   }
 }

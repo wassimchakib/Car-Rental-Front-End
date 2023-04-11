@@ -7,7 +7,6 @@ import items from './cars';
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
-  const cars = useSelector((state) => state.car.list);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
