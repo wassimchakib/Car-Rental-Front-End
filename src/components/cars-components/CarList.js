@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
