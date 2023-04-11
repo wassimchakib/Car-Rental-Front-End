@@ -87,6 +87,57 @@
   max-width: 250px;
 }
 
+.carDetails {
+  height: 70vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 26px;
+  margin: 90px;
+  box-sizing: border-box;
+  background-color: rgb(233, 233, 233);
+}
+
+.carDetailsImage > img {
+  width: 100%;
+  height: auto;
+}
+
+.carDetailsInfo {
+  margin-left: 28px;
+  width: 50%;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.title > span {
+  margin-left: 8px;
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.carDescription {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 18px 0;
+}
+
+.reserveBtn {
+  background-color: #98bf11;
+  border-radius: 5px;
+  padding: 8px 18px;
+  font-size: 24px;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.reserveBtn:hover {
+  background-color: #49c95c;
+}
+
 /* mobile responsive design style */
 @media only screen and (max-width: 600px) {
   .cardGrid {
