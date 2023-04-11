@@ -8,6 +8,8 @@ import DeleteCar from './pages/delete-car/DeleteCar';
 import Navbar from './components/Navbar/Navbar';
 import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
+import CarList from './components/cars-components/CarList';
+import CarDetails from './components/cars-components/CarDetails';
 import store from './redux/store';
 import ProtectedRoute from './routing/ProtectedRoute';
 
@@ -20,7 +22,8 @@ function App() {
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route exact path="/" element={<Navigate to="/cars" />} />
-              <Route exact path="/cars" element={<h1>Cars Page</h1>} />
+              <Route exact path="/cars/:id" element={<CarDetails />} />
+              <Route exact path="/cars" element={<CarList itemsPerPage={6} />} />
               <Route exact path="/reserve" element={<Reserve />} />
               <Route
                 exact

@@ -1,0 +1,124 @@
+.carWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.carListTitle {
+  font-size: 24px;
+  font-weight: 600;
+  padding: 16px 0;
+  width: 95%;
+  margin: 30px auto 20px auto;
+  letter-spacing: 1px;
+  text-align: center;
+  background-color: #98bf11;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+  text-align: center;
+  padding: 12px 16px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: rgb(233, 233, 233);
+}
+
+.page-link {
+  border: 1px solid #98bf11;
+  padding: 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.page-item.active {
+  background-color: #98bf11;
+  color: white;
+}
+
+.page-item:hover {
+  background-color: #98bf11;
+  color: white;
+}
+
+.cardContainer {
+  flex: 1;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  padding: 26px;
+}
+
+.cardCol {
+  min-width: 270px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.cardCol:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
+  -webkit-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
+  -moz-box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);
+}
+
+.carImg {
+  width: 100%;
+  height: 250px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.carText {
+  border: 1px solid #98bf11;
+  padding: 6px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.carTitle {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.carIntro {
+  font-size: 14px;
+}
+
+/* mobile responsive design style */
+@media only screen and (max-width: 1220px) {
+  .carImg {
+    height: 200px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .cardGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .carListTitle {
+    padding: 8px;
+  }
+}
