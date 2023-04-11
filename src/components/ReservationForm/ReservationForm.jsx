@@ -110,11 +110,11 @@ const ReservationForm = () => {
   }, [isPickUpCalendarOpen, isReturnCalendarOpen]);
 
   return (
-    <form ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
-      <label htmlFor="car" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
+    <form data-testid="form" ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
+      <label htmlFor="car_id" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
         <span className="text-xl font-semibold text-gray-600">Select a car</span>
-        <select onChange={handleInput} name="car_id" id="car_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
-          <option selected="selected" disabled value="">Select a car</option>
+        <select defaultValue="default" onChange={handleInput} name="car_id" id="car_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
+          <option disabled value="default">Select a car</option>
           { list && list.map((car) => (<option key={car.id} value={car.id}>{car.name}</option>)) }
         </select>
       </label>
