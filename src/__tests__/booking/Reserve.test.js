@@ -85,7 +85,7 @@ describe('Reserve page', () => {
       const returnDateFieldLabel = screen.getByLabelText('Return date');
       const returnDateInputField = screen.getByRole('textbox', { name: 'Return date' });
 
-      // Open pick up date calendar
+      // Open return date calendar
       act(() => userEvent.click(returnDateInputField));
 
       const today = new Date();
