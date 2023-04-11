@@ -48,10 +48,6 @@
   padding: 26px;
 }
 
-.cardCol {
-   height: fit-content;
-}
-
 .cardCol:hover {
   cursor: pointer;
   box-shadow: 0 3px 13px 0 rgba(118, 240, 115, 0.75);

@@ -8,13 +8,11 @@ import items from './cars';
 import './CarsList.css';
 
 const CarList = ({ itemsPerPage }) => {
-  const dispatch = useDispatch();
   const cars = useSelector((state) => state.car.list);
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
-  console.log('Car List here', cars);
   useEffect(() => {
     // fetch data from API later
     const endOffset = itemOffset + itemsPerPage;
