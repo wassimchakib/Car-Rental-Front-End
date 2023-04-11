@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
@@ -27,7 +26,7 @@ const CarList = ({ itemsPerPage }) => {
   };
 
   return (
-    <>
+    <div className="carWrapper">
       <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
       <Container className="cardContainer">
         <CarCard currentItems={currentItems} />
@@ -57,7 +56,7 @@ const CarList = ({ itemsPerPage }) => {
         />
       </div>
 
-    </>
+    </div>
   );
 };
 

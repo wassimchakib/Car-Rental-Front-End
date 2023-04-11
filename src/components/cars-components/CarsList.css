@@ -1,3 +1,10 @@
+.carWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
+}
+
 .carListTitle {
   font-size: 24px;
   font-weight: 600;
@@ -13,11 +20,12 @@
 .pagination {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 10px;
   align-items: center;
   text-align: center;
   padding: 8px 16px;
-  margin: 0 90px 24px 90px;
+  margin: 0 auto;
   box-sizing: border-box;
   background-color: rgb(233, 233, 233);
 }
@@ -39,17 +47,16 @@
   color: white;
 }
 
+.cardContainer {
+  flex: 1;
+}
+
 .cardGrid {
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
-  min-height: 80vh;
   gap: 24px;
   padding: 26px;
-}
-
-.cardCol {
-   height: fit-content;
 }
 
 .cardCol:hover {
