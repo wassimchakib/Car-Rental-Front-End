@@ -10,7 +10,7 @@ const CarDetails = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/reserve");
+    navigate('/reserve');
   };
 
   return (
