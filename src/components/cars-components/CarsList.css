@@ -11,26 +11,22 @@
 }
 
 .pagination {
-  position: absolute;
-  bottom: -10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   padding: 8px 16px;
-  margin-left: 24px;
+  margin: 0 90px 24px 90px;
   box-sizing: border-box;
   background-color: rgb(233, 233, 233);
-  width: 80%;
 }
 
-.page-item {
+.page-link {
   border: 1px solid #98bf11;
-  padding: 6px 12px;
+  padding: 0 12px;
   font-size: 18px;
   font-weight: 600;
-  color: #98bf11;
 }
 
 .page-item.active {
@@ -47,8 +43,13 @@
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;
+  min-height: 80vh;
   gap: 24px;
   padding: 26px;
+}
+
+.cardCol {
+   height: fit-content;
 }
 
 .cardCol:hover {
@@ -71,7 +72,6 @@
 .carText {
   border: 1px solid #98bf11;
   padding: 6px;
-  height: 100px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -91,5 +91,14 @@
 @media only screen and (max-width: 600px) {
   .cardGrid {
     grid-template-columns: auto;
+  }
+
+  .pagination {
+    margin: 0 18px 24px 18px;
+  }
+
+  .carListTitle {
+    margin: 6px 22px;
+    padding: 8px;
   }
 }

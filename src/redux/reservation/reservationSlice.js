@@ -7,7 +7,7 @@ const DELETE_RESERVATION = 'car-rental/reservation/DELETE';
 
 // Method getReservations
 export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/reservations';
+  const API_URL = 'http://localhost:3000/api/v1/reservations';
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',

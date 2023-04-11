@@ -31,19 +31,19 @@ const CarList = ({ itemsPerPage }) => {
   return (
     <>
       <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
-      <Container>
+      <Container className="cardContainer">
         <CarCard currentItems={currentItems} />
       </Container>
 
       {/* pagination */}
       <div className="paginationContainer">
         <ReactPaginate
-          nextLabel="next >"
+          nextLabel="->"
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           marginPagesDisplayed={2}
           pageCount={pageCount}
-          previousLabel="< previous"
+          previousLabel="<-"
           pageClassName="page-item"
           pageLinkClassName="page-link"
           previousClassName="page-item"
