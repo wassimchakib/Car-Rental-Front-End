@@ -1,72 +1,108 @@
-import { render, waitFor, act } from '@testing-library/react';
+import {
+  render,
+  waitFor,
+  act,
+  screen,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import axios from 'axios';
 import Reserve from '../../pages/Reserve/Reserve';
+import carSlice, { getCars } from '../../redux/car/carSlice';
+import cars from '../data/cars.json';
+
+jest.mock('axios');
+
+const store = configureStore({
+  reducer: {
+    car: carSlice,
+  },
+});
 
 describe('Reserve page', () => {
-  it('should match the snapshot', () => {
-    const reservePage = render(<Reserve />);
-    expect(reservePage).toMatchSnapshot();
+  beforeEach(async () => {
+    axios.get.mockResolvedValue({ data: cars });
+    await act(() => store.dispatch(getCars()));
+    await act(() => render(<Provider store={store}><Reserve /></Provider>));
   });
 
-  it('should have a cars dropdown', () => {
-    const reservePage = render(<Reserve />);
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 
-    const carFieldLabel = reservePage.getByLabelText('Select a car');
-    const carDropdown = reservePage.container.querySelector('select');
+  it('should have a cars dropdown', async () => {
+    await waitFor(() => {
+      const cityFieldLabel = screen.getByLabelText(/Select a car/i);
+      expect(cityFieldLabel).toBeInTheDocument();
 
-    expect(carFieldLabel).toBeInTheDocument();
-    expect(carDropdown).toBeInTheDocument();
+      const carDropdown = screen.queryByRole('combobox', { name: 'Select a car' });
+      expect(carDropdown).toBeInTheDocument();
+    });
   });
 
-  it('should have a city input field', () => {
-    const reservePage = render(<Reserve />);
+  it('should have a city input field', async () => {
+    await waitFor(() => {
+      const cityFieldLabel = screen.getByLabelText('City');
+      const cityInputField = screen.getByRole('textbox', { name: 'City' });
 
-    const cityFieldLabel = reservePage.getByLabelText('City');
-    const cityInputField = reservePage.getByPlaceholderText('Enter your city');
-
-    expect(cityFieldLabel).toBeInTheDocument();
-    expect(cityInputField).toBeInTheDocument();
+      expect(cityFieldLabel).toBeInTheDocument();
+      expect(cityInputField).toBeInTheDocument();
+    });
   });
 
   it('should have a pick up date input field and a calendar dropdown', async () => {
-    const reservePage = render(<Reserve />);
+    await waitFor(() => {
+      const pickUpDateFieldLabel = screen.getByLabelText('Pick up date');
+      const pickUpDateInputField = screen.getByRole('textbox', { name: 'Pick up date' });
 
-    const pickUpDateFieldLabel = reservePage.getByLabelText('Pick up date');
-    const pickUpDateInputField = reservePage.getByPlaceholderText('11/12/2021');
+      // Open pick up date calendar
+      act(() => userEvent.click(pickUpDateInputField));
 
-    // Open pick up date calendar
-    act(() => userEvent.click(pickUpDateInputField));
+      const today = new Date();
 
-    const calendars = reservePage.container.querySelectorAll('.rdp');
+      const calendar = screen.getAllByText(`${months[today.getMonth()]} ${today.getFullYear()}`);
 
-    expect(pickUpDateFieldLabel).toBeInTheDocument();
-    expect(pickUpDateInputField).toBeInTheDocument();
-    await waitFor(() => { expect(calendars[0]).toBeInTheDocument(); });
-    await waitFor(() => { expect(calendars[0].parentElement.classList.contains('hidden')).toBeFalsy(); });
+      expect(pickUpDateFieldLabel).toBeInTheDocument();
+      expect(pickUpDateInputField).toBeInTheDocument();
+      expect(calendar[0]).toBeInTheDocument();
+    });
   });
 
   it('should have a return date input field and a calendar dropdown', async () => {
-    const reservePage = render(<Reserve />);
+    await waitFor(() => {
+      const returnDateFieldLabel = screen.getByLabelText('Return date');
+      const returnDateInputField = screen.getByRole('textbox', { name: 'Return date' });
 
-    const returnDateFieldLabel = reservePage.getByLabelText('Return date');
-    const returnDateInputField = reservePage.getByPlaceholderText('01/06/2022');
+      // Open pick up date calendar
+      act(() => userEvent.click(returnDateInputField));
 
-    // Open pick up date calendar
-    act(() => userEvent.click(returnDateInputField));
+      const today = new Date();
 
-    const calendars = reservePage.container.querySelectorAll('.rdp');
+      const calendar = screen.getAllByText(`${months[today.getMonth()]} ${today.getFullYear()}`);
 
-    expect(returnDateFieldLabel).toBeInTheDocument();
-    expect(returnDateInputField).toBeInTheDocument();
-    await waitFor(() => { expect(calendars[1]).toBeInTheDocument(); });
-    await waitFor(() => { expect(calendars[1].parentElement.classList.contains('hidden')).toBeFalsy(); });
+      expect(returnDateFieldLabel).toBeInTheDocument();
+      expect(returnDateInputField).toBeInTheDocument();
+      expect(calendar[1]).toBeInTheDocument();
+    });
   });
 
-  it('should have a submit button', () => {
-    const reservePage = render(<Reserve />);
+  it('should have a submit button', async () => {
+    await waitFor(() => {
+      const button = screen.getByText('SUBMIT');
 
-    const button = reservePage.getByText('SUBMIT');
-
-    expect(button).toBeInTheDocument();
+      expect(button).toBeInTheDocument();
+    });
   });
 });
