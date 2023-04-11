@@ -25,7 +25,7 @@ const CarList = ({ itemsPerPage }) => {
   };
 
   return (
-    <>
+    <div className="carWrapper">
       <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
       <Container className="cardContainer">
         <CarCard currentItems={currentItems} />
@@ -55,7 +55,7 @@ const CarList = ({ itemsPerPage }) => {
         />
       </div>
 
-    </>
+    </div>
   );
 };
 
