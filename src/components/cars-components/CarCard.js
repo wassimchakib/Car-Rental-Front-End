@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./CarsList.css";
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './CarsList.css';
 
 const CarCard = ({ currentItems }) => {
   // handle navigation click event on car card
@@ -12,8 +12,8 @@ const CarCard = ({ currentItems }) => {
   return (
     <>
       <div className="card-container">
-        {currentItems &&
-          currentItems.map((item) => (
+        {currentItems
+          && currentItems.map((item) => (
             <div
               className="reservation-card"
               key={item.id}
@@ -50,11 +50,11 @@ CarCard.propTypes = {
         PropTypes.shape({
           url: PropTypes.string.isRequired,
           id: PropTypes.number.isRequired,
-        })
+        }),
       ).isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-    })
+    }),
   ),
 };
 
