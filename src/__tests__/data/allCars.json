@@ -1,0 +1,41 @@
+{
+  "data": {
+    "cars": [
+      {
+        "id": 10,
+        "name": "TOYOTA LAND CRUSIER",
+        "description": "TOYOTA LAND CRUISER - HYBRID FORGED SERIES: HF6-4",
+        "color": "White",
+        "price": 150,
+        "year": "2020",
+        "car_type": "SUV",
+        "created_at": "2023-04-10T12:11:16.603Z",
+        "updated_at": "2023-04-10T12:11:16.603Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 33,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2021/10/Toyota-LandCruiser-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2021-302-1047x698.jpg",
+            "created_at": "2023-04-10T12:11:16.606Z",
+            "updated_at": "2023-04-10T12:11:16.606Z",
+            "car_id": 10
+          },
+          {
+            "id": 34,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2021/10/Toyota-LandCruiser-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2021-300-1047x698.jpg",
+            "created_at": "2023-04-10T12:11:16.609Z",
+            "updated_at": "2023-04-10T12:11:16.609Z",
+            "car_id": 10
+          },
+          {
+            "id": 35,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2021/10/Toyota-LandCruiser-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2021-301-1047x698.jpg",
+            "created_at": "2023-04-10T12:11:16.611Z",
+            "updated_at": "2023-04-10T12:11:16.611Z",
+            "car_id": 10
+          }
+        ]
+      }
+     ]
+  }
+}

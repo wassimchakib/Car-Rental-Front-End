@@ -35,9 +35,9 @@ const CarCard = ({ item }) => {
       <p className="car-color">{item.color}</p>
       <p className="description">{truncatedText}</p>
       <p className="price">
+        <span>$</span>
         {item.price}
-        {' '}
-        per day
+        <span> per day</span>
       </p>
       <button className="btn-delete" type="button" onClick={handleDeleteClick}>
         Delete
