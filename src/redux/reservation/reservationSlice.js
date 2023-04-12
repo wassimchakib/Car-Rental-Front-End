@@ -64,6 +64,16 @@ const reservationSlice = createSlice({
     success: false,
     error: '',
     list: '',
+    response: null,
+  },
+  reducers: {
+    resetErrors: (state) => ({
+      ...state,
+      error: '',
+      isLoading: false,
+      success: false,
+      response: null,
+    }),
   },
   extraReducers: (builder) => {
     // Get Reservations
@@ -130,4 +140,5 @@ const reservationSlice = createSlice({
   },
 });
 
+export const { resetErrors } = reservationSlice.actions;
 export default reservationSlice.reducer;
