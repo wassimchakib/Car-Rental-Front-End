@@ -38,6 +38,7 @@ const ReservationForm = () => {
     }
 
     return () => dispatch(resetErrors());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
 
   const today = new Date();
