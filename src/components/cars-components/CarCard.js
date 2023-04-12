@@ -12,8 +12,8 @@ const CarCard = ({ currentItems }) => {
   return (
     <>
       <div className="cardGrid">
-        {
-          currentItems && currentItems.map((item) => (
+        {currentItems
+          && currentItems.map((item) => (
             <div
               className="cardCol"
               key={item.id}
@@ -21,22 +21,22 @@ const CarCard = ({ currentItems }) => {
               tabIndex={0}
               onClick={() => handleNavigate(item.id)}
             >
-              <img className="carImg" src={item.image[0]} alt={item.name} />
+              <img
+                className="carImg"
+                src={item.images.length > 0 && item.images[0].url}
+                alt={item.name}
+              />
               <div className="carText">
                 <h3 className="carTitle">{item.name}</h3>
                 <p className="carIntro">
-                  {
-                    item.description.length > 50
-                      ? `${item.description.slice(0, 55)}...`
-                      : item.description
-                  }
+                  {item.description.length > 50
+                    ? `${item.description.slice(0, 55)}...`
+                    : item.description}
                 </p>
               </div>
             </div>
-          ))
-        }
+          ))}
       </div>
-
     </>
   );
 };
