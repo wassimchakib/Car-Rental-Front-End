@@ -26,7 +26,7 @@ function App() {
               <Route
                 exact
                 path="/cars"
-                element={<CarList itemsPerPage={6} />}
+                element={<CarList itemsPerPage={3} />}
               />
               <Route exact path="/reserve" element={<Reserve />} />
               <Route exact path="/reserve/:id" element={<Reserve />} />
