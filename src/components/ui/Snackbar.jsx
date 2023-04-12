@@ -17,10 +17,10 @@ const CustomSnackbar = (props, ref) => {
   );
 };
 
+const Snackbar = forwardRef(CustomSnackbar);
+
 CustomSnackbar.propTypes = {
   message: PropTypes.string.isRequired,
 };
-
-const Snackbar = forwardRef(CustomSnackbar);
 
 export default Snackbar;

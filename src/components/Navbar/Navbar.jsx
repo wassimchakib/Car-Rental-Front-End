@@ -15,8 +15,15 @@ const Navbar = () => {
     navRef.current.classList.toggle('responsive_nav');
   };
 
+  const hideNavBar = () => {
+    navRef.current.classList.toggle('responsive_nav');
+  };
+
   const handleClick = () => {
     dispatch(logout());
+    if (navRef.current.classList.contains('responsive_nav')) {
+      hideNavBar();
+    }
   };
 
   return (
@@ -30,11 +37,11 @@ const Navbar = () => {
         </button>
         <img className="navbar__title" src={myIcon} alt="Rent It icon" />
         <ul className="navbar__links">
-          <li><NavLink to="cars" className={({ isActive }) => (isActive ? 'active' : '')}>Cars</NavLink></li>
-          <li><NavLink to="reserve" className={({ isActive }) => (isActive ? 'active' : '')}>Booking</NavLink></li>
-          <li><NavLink to="my-reservations" className={({ isActive }) => (isActive ? 'active' : '')}>Reservations</NavLink></li>
-          <li><NavLink to="add" className={({ isActive }) => (isActive ? 'active' : '')}>Add A Car</NavLink></li>
-          <li><NavLink to="delete" className={({ isActive }) => (isActive ? 'active' : '')}>Delete A Car</NavLink></li>
+          <li><NavLink onClick={hideNavBar} to="cars" className={({ isActive }) => (isActive ? 'active' : '')}>Cars</NavLink></li>
+          <li><NavLink onClick={hideNavBar} to="reserve" className={({ isActive }) => (isActive ? 'active' : '')}>Booking</NavLink></li>
+          <li><NavLink onClick={hideNavBar} to="my-reservations" className={({ isActive }) => (isActive ? 'active' : '')}>Reservations</NavLink></li>
+          <li><NavLink onClick={hideNavBar} to="add" className={({ isActive }) => (isActive ? 'active' : '')}>Add A Car</NavLink></li>
+          <li><NavLink onClick={hideNavBar} to="delete" className={({ isActive }) => (isActive ? 'active' : '')}>Delete A Car</NavLink></li>
           {(!token || token.length <= 0 || isLoading) || (<li><button className="nav__logout" type="button" onClick={handleClick}>Logout</button></li>)}
         </ul>
         <h3 className="navbar__footer">

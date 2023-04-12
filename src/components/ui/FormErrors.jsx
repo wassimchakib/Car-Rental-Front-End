@@ -5,7 +5,7 @@ const FormErrors = ({ formErrors }) => (
   <div className="form__errors">
     {
       Object.keys(formErrors).map((field) => (
-        formErrors[field].length > 0 && (
+        formErrors[field] && formErrors[field].length > 0 && (
         <p className="form__error" key={`${field}`}>
           {field}
           :

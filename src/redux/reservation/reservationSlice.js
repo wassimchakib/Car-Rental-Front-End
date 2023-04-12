@@ -7,7 +7,7 @@ const DELETE_RESERVATION = 'car-rental/reservation/DELETE';
 
 // Method getReservations
 export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:3000/api/v1/reservations';
+  const API_URL = 'http://localhost:1800/api/v1/reservations';
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -50,7 +50,8 @@ export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id,
     },
   };
   try {
-    return await axios.delete(API_URL, requestOptions);
+    await axios.delete(API_URL, requestOptions);
+    return id;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }
@@ -63,7 +64,17 @@ const reservationSlice = createSlice({
     isLoading: false,
     success: false,
     error: '',
-    list: '',
+    list: [],
+    response: null,
+  },
+  reducers: {
+    resetErrors: (state) => ({
+      ...state,
+      error: '',
+      isLoading: false,
+      success: false,
+      response: null,
+    }),
   },
   extraReducers: (builder) => {
     // Get Reservations
@@ -115,12 +126,17 @@ const reservationSlice = createSlice({
       error: '',
     }));
 
-    builder.addCase(deleteReservation.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      success: true,
-      id: action.payload.data.data,
-    }));
+    builder.addCase(deleteReservation.fulfilled, (state, action) => {
+      const id = action.payload;
+
+      return {
+        ...state,
+        isLoading: false,
+        success: true,
+        id,
+        list: state.list.filter((reservation) => reservation.id !== id),
+      };
+    });
 
     builder.addCase(deleteReservation.rejected, (state, action) => ({
       ...state,
@@ -130,4 +146,5 @@ const reservationSlice = createSlice({
   },
 });
 
+export const { resetErrors } = reservationSlice.actions;
 export default reservationSlice.reducer;

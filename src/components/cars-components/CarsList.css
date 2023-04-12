@@ -9,7 +9,8 @@
   font-size: 24px;
   font-weight: 600;
   padding: 16px 0;
-  margin: 6px 90px;
+  width: 95%;
+  margin: 30px auto 20px auto;
   letter-spacing: 1px;
   text-align: center;
   background-color: #98bf11;
@@ -24,7 +25,7 @@
   column-gap: 10px;
   align-items: center;
   text-align: center;
-  padding: 8px 16px;
+  padding: 12px 16px;
   margin: 0 auto;
   box-sizing: border-box;
   background-color: rgb(233, 233, 233);
@@ -53,10 +54,17 @@
 
 .cardGrid {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  flex-direction: row;
   justify-content: center;
   gap: 24px;
   padding: 26px;
+}
+
+.cardCol {
+  min-width: 270px;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .cardCol:hover {
@@ -68,8 +76,7 @@
 
 .carImg {
   width: 100%;
-  max-width: 300px;
-  height: 200px;
+  height: 250px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
@@ -91,7 +98,6 @@
 
 .carIntro {
   font-size: 14px;
-  max-width: 250px;
 }
 
 .carDetails {
@@ -145,17 +151,24 @@
 }
 
 /* mobile responsive design style */
-@media only screen and (max-width: 600px) {
-  .cardGrid {
-    grid-template-columns: auto;
+@media only screen and (max-width: 1220px) {
+  .carImg {
+    height: 200px;
   }
+}
 
-  .pagination {
-    margin: 0 18px 24px 18px;
+@media only screen and (max-width: 1220px) {
+  .cardGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
   }
 
   .carListTitle {
-    margin: 6px 22px;
     padding: 8px;
   }
 
