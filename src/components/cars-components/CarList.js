@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
 import './CarsList.css';
 import { getCars } from '../../redux/car/carSlice';
 
 const CarList = ({ itemsPerPage }) => {
-  const { list, isLoading } = useSelector((state) => state.car);
+  const { list } = useSelector((state) => state.car);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,9 +34,9 @@ const CarList = ({ itemsPerPage }) => {
   return (
     <div className="carWrapper">
       <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
-      <Container className="cardContainer">
+      <div className="cardContainer">
         <CarCard currentItems={currentItems} />
-      </Container>
+      </div>
 
       {/* pagination */}
       <div className="paginationContainer">

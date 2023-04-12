@@ -2,12 +2,29 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const SHOW_CARS = 'car-rental/car/SHOW';
+const SHOW_CAR = 'car-rental/car/SHOW/:id';
 const ADD_CAR = 'car-rental/car/ADD';
 const DELETE_CAR = 'car-rental/car/DELETE';
 
 // Method getCars
 export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
   const API_URL = 'http://localhost:1800/api/v1/cars';
+  const token = localStorage.getItem('token');
+  const requestOptions = {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    return await axios.get(API_URL, requestOptions);
+  } catch (err) {
+    return thunkAPI.rejectWithValue(err.response.data.error);
+  }
+});
+
+export const getCar = createAsyncThunk(SHOW_CAR, async (id, thunkAPI) => {
+  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -63,7 +80,8 @@ const carSlice = createSlice({
     isLoading: false,
     success: false,
     error: '',
-    list: '',
+    list: [],
+    car: null,
   },
   extraReducers: (builder) => {
     // Get Cars
@@ -81,6 +99,31 @@ const carSlice = createSlice({
     }));
 
     builder.addCase(getCars.rejected, (state, action) => ({
+      ...state,
+      isLoading: false,
+      error: action.payload,
+    }));
+
+    // Get Car
+    builder.addCase(getCar.pending, (state) => ({
+      ...state,
+      isLoading: true,
+      error: '',
+    }));
+
+    builder.addCase(getCar.fulfilled, (state, action) => {
+      const newstate = {
+        ...state,
+        isLoading: false,
+        success: true,
+        car: action.payload.data.data.cars,
+      };
+      console.log(newstate);
+
+      return newstate;
+    });
+
+    builder.addCase(getCar.rejected, (state, action) => ({
       ...state,
       isLoading: false,
       error: action.payload,

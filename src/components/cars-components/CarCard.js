@@ -45,11 +45,18 @@ CarCard.propTypes = {
   currentItems: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      image: PropTypes.string.isRequired,
+      images: PropTypes.arrayOf(PropTypes.shape({
+        url: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+      })).isRequired,
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     }),
-  ).isRequired,
+  ),
+};
+
+CarCard.defaultProps = {
+  currentItems: [],
 };
 
 export default CarCard;
