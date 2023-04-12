@@ -23,8 +23,13 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route exact path="/" element={<Navigate to="/cars" />} />
               <Route exact path="/cars/:id" element={<CarDetails />} />
-              <Route exact path="/cars" element={<CarList itemsPerPage={6} />} />
+              <Route
+                exact
+                path="/cars"
+                element={<CarList itemsPerPage={6} />}
+              />
               <Route exact path="/reserve" element={<Reserve />} />
+              <Route exact path="/reserve/:id" element={<Reserve />} />
               <Route
                 exact
                 path="/my-reservations"
