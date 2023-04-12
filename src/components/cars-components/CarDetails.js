@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import ImageCarousel from './ImageCarousel';
 import items from './cars';
 import './CarsList.css';
 
@@ -17,7 +18,8 @@ const CarDetails = () => {
     <>
       <div className="carDetails">
         <div className="carDetailsImage">
-          <img src={car.image} alt={car.name} />
+          {/* <img src={car.image} alt={car.name} /> */}
+          <ImageCarousel images={car.image} altText={car.name} />
         </div>
         <div className="carDetailsInfo">
           <h2 className="carTitle">

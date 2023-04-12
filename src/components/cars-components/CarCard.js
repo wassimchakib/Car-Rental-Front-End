@@ -21,7 +21,7 @@ const CarCard = ({ currentItems }) => {
               tabIndex={0}
               onClick={() => handleNavigate(item.id)}
             >
-              <img className="carImg" src={item.image} alt={item.name} />
+              <img className="carImg" src={item.image[0]} alt={item.name} />
               <div className="carText">
                 <h3 className="carTitle">{item.name}</h3>
                 <p className="carIntro">
