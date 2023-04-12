@@ -4,7 +4,7 @@ import { render, act, screen } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
 import carSlice, { getCars } from '../../redux/car/carSlice';
-import DeleteCar from '../../pages/delete-car/DeleteCar';
+import CarList from '../../components/cars-components/CarList';
 import cars from '../data/allCars.json';
 
 jest.mock('axios');
@@ -15,7 +15,7 @@ const store = configureStore({
   },
 });
 
-describe('DeleteCar page', () => {
+describe('Cars page', () => {
   beforeEach(async () => {
     axios.get.mockResolvedValue({ data: cars });
     await act(() => store.dispatch(getCars()));
@@ -24,7 +24,7 @@ describe('DeleteCar page', () => {
   it('should have an image of the car', async () => {
     const { container } = await act(() => render(
       <Provider store={store}>
-        <DeleteCar />
+        <CarList />
       </Provider>,
     ));
 
@@ -42,7 +42,7 @@ describe('DeleteCar page', () => {
   it('should have a name', async () => {
     await act(() => render(
       <Provider store={store}>
-        <DeleteCar />
+        <CarList />
       </Provider>,
     ));
 
@@ -51,22 +51,10 @@ describe('DeleteCar page', () => {
     expect(carName).toBeInTheDocument();
   });
 
-  it('should have a color', async () => {
-    await act(() => render(
-      <Provider store={store}>
-        <DeleteCar />
-      </Provider>,
-    ));
-
-    const carColor = await screen.findByText(cars.data.cars[0].color);
-
-    expect(carColor).toBeInTheDocument();
-  });
-
   it('should have a description', async () => {
     await act(() => render(
       <Provider store={store}>
-        <DeleteCar />
+        <CarList />
       </Provider>,
     ));
 
@@ -77,27 +65,15 @@ describe('DeleteCar page', () => {
     expect(carDescription).toBeInTheDocument();
   });
 
-  it('should have a price', async () => {
+  it('should have a page title', async () => {
     await act(() => render(
       <Provider store={store}>
-        <DeleteCar />
+        <CarList />
       </Provider>,
     ));
 
-    const carPrice = await screen.findByText(cars.data.cars[0].price);
+    const title = await screen.findByText('Your Luxury Car for your Comfort');
 
-    expect(carPrice).toBeInTheDocument();
-  });
-
-  it('should have a delete button', async () => {
-    await act(() => render(
-      <Provider store={store}>
-        <DeleteCar />
-      </Provider>,
-    ));
-
-    const button = await screen.findByText('Delete');
-
-    expect(button).toBeInTheDocument();
+    expect(title).toBeInTheDocument();
   });
 });
