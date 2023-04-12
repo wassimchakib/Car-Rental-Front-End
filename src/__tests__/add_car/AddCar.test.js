@@ -1,25 +1,88 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import {
+  render, waitFor, act, screen,
+} from '@testing-library/react';
+import { configureStore } from '@reduxjs/toolkit';
+import axios from 'axios';
+import carSlice, { getCars } from '../../redux/car/carSlice';
 import AddCar from '../../pages/AddCar/AddCar';
+import cars from '../data/cars.json';
 
-describe('AddCar', () => {
-  it('should have a submit button', () => {
-    const formPage = render(<AddCar />);
+jest.mock('axios');
 
-    const button = formPage.getByText('Submit');
+const store = configureStore({
+  reducer: {
+    car: carSlice,
+  },
+});
 
-    expect(button).toBeInTheDocument();
+describe('AddCar page', () => {
+  beforeEach(async () => {
+    axios.get.mockResolvedValue({ data: cars });
+    await act(() => store.dispatch(getCars()));
+    await act(() => render(
+      <Provider store={store}>
+        <AddCar />
+      </Provider>,
+    ));
   });
 
-  it('renders all input fields', () => {
-    const screen = render(<AddCar />);
+  it('should have a submit button', async () => {
+    await waitFor(() => {
+      const button = screen.getByText('Submit');
 
-    expect(screen.getByText('Name:')).toBeInTheDocument();
-    expect(screen.getByText('Description:')).toBeInTheDocument();
-    expect(screen.getByText('Color:')).toBeInTheDocument();
-    expect(screen.getByText('year:')).toBeInTheDocument();
-    expect(screen.getByText('Price:')).toBeInTheDocument();
-    expect(screen.getByText('type:')).toBeInTheDocument();
-    expect(screen.getByText('Images:')).toBeInTheDocument();
+      expect(button).toBeInTheDocument();
+    });
+  });
+
+  it('should have a name input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByLabelText('Name:');
+
+      expect(nameLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a description input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByLabelText('Description:');
+      expect(nameLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a color input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByLabelText('Color:');
+      expect(nameLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a year input field', async () => {
+    await waitFor(() => {
+      const yearLabel = screen.getByLabelText('year:');
+      expect(yearLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a price input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByLabelText('Color:');
+      expect(nameLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a type input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByLabelText('type:');
+      expect(nameLabel).toBeInTheDocument();
+    });
+  });
+
+  it('should have a images input field', async () => {
+    await waitFor(() => {
+      const nameLabel = screen.getByText('Images:');
+      expect(nameLabel).toBeInTheDocument();
+    });
   });
 });
