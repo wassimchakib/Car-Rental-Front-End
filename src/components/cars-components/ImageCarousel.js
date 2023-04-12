@@ -1,25 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Carousel from 'react-bootstrap/Carousel';
+import { Carousel } from 'flowbite-react';
 
 const ImageCarousel = ({ images, altText }) => (
-  <Carousel fade>
-    {images.map((image) => (
-      <Carousel.Item key={altText}>
+  <div className="h-[300px] xs:h-[400px] sm:h-[450px] md:h-[450px]">
+    <Carousel slideInterval={3000}>
+      {images && images.map((image) => (
         <img
-          className="w-100"
-          src={image}
+          key={altText}
+          src={image.url}
           alt={altText || 'Car Image'}
-          height={200}
+          className="h-full w-full"
         />
-      </Carousel.Item>
-    ))}
-  </Carousel>
+      ))}
+    </Carousel>
+  </div>
 );
 
 ImageCarousel.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    url: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  })),
   altText: PropTypes.string.isRequired,
+};
+
+ImageCarousel.defaultProps = {
+  images: [],
 };
 
 export default ImageCarousel;
