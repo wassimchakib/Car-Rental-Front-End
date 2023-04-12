@@ -21,8 +21,12 @@ const MyReservations = () => {
 
   return (
     <div className="card-container">
-      { isLoading && <Spinner />}
-      { list && list.length > 0 ? showListOfReservations() : <h2>No Reservations Found</h2> }
+      { list.length <= 0 && <h2>No Reservations Found</h2> }
+      {
+        isLoading
+          ? <Spinner />
+          : showListOfReservations()
+      }
     </div>
   );
 };
