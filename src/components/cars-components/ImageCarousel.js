@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react';
+import PropTypes from "prop-types";
 import Carousel from 'react-bootstrap/Carousel';
 
 function ImageCarousel({ images, altText }) {
   return (
     <Carousel fade>
-      {images.map((image, index) => (
-        <Carousel.Item key={index}>
+      {images.map((image) => (
+        <Carousel.Item key={altText}>
           <img
             className="w-100"
             src={image}
-            alt={altText || "Car Image"}
+            alt={altText || 'Car Image'}
             height={200}
           />
         </Carousel.Item>
@@ -17,5 +18,10 @@ function ImageCarousel({ images, altText }) {
     </Carousel>
   );
 }
+
+ImageCarousel.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  altText: PropTypes.string,
+};
 
 export default ImageCarousel;
