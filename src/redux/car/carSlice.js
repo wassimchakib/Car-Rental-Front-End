@@ -111,17 +111,12 @@ const carSlice = createSlice({
       error: '',
     }));
 
-    builder.addCase(getCar.fulfilled, (state, action) => {
-      const newstate = {
-        ...state,
-        isLoading: false,
-        success: true,
-        car: action.payload.data.data.cars,
-      };
-      console.log(newstate);
-
-      return newstate;
-    });
+    builder.addCase(getCar.fulfilled, (state, action) => ({
+      ...state,
+      isLoading: false,
+      success: true,
+      car: action.payload.data.data.cars,
+    }));
 
     builder.addCase(getCar.rejected, (state, action) => ({
       ...state,
