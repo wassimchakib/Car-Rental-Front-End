@@ -6,15 +6,14 @@ import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 import { enqueueSnackbar } from 'notistack';
 import Field from '../ui/Field';
-import cn from '../../utils/classnames';
 import useOnClickOutside from '../../hooks/useOutSideClick';
 import addMonths from '../../utils/utils';
-import { addReservation } from '../../redux/reservation/reservationSlice';
+import { addReservation, resetErrors } from '../../redux/reservation/reservationSlice';
 import { getCars } from '../../redux/car/carSlice';
 
 const ReservationForm = () => {
   const [form, setForm] = useState({
-    car_id: '',
+    car_id: 'default',
     city: '',
     starting_date: null,
     ending_date: null,
@@ -26,7 +25,20 @@ const ReservationForm = () => {
     dispatch(getCars());
   }, [dispatch]);
 
-  const { list } = useSelector((state) => state.car);
+  const { list, isLoading: carsLoading } = useSelector((state) => state.car);
+  const { response } = useSelector((state) => state.reservation);
+
+  useEffect(() => {
+    if (response?.reservation_id) {
+      enqueueSnackbar('Reservation added successfully', {
+        variant: 'success',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
+    }
+
+    return () => dispatch(resetErrors());
+  }, [response]);
 
   const today = new Date();
 
@@ -39,6 +51,15 @@ const ReservationForm = () => {
 
   const handleFormSubmit = (ev) => {
     ev.preventDefault();
+
+    if (form.car_id === 'default') {
+      enqueueSnackbar('Please choose a car', {
+        variant: 'errorMessage',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
+      return;
+    }
 
     if (form.city.trim().length === 0) {
       enqueueSnackbar('Please enter a city', {
@@ -76,7 +97,14 @@ const ReservationForm = () => {
       return;
     }
 
+    dispatch(resetErrors());
     dispatch(addReservation(form));
+    setForm({
+      car_id: 'default',
+      city: '',
+      starting_date: null,
+      ending_date: null,
+    });
   };
 
   const setSelectedDay = (day, key) => setForm({
@@ -113,8 +141,8 @@ const ReservationForm = () => {
     <form data-testid="form" ref={formRef} onSubmit={handleFormSubmit} className="h-[620px] overflow-x-hidden overflow-y-auto md:overflow-visible md:h-fit rounded-lg p-3 shadow-lg flex md:flex-row justify-between border border-gray-100 flex-col md:max-w-[90%] w-full max-w-[400px] bg-gray-100 md:bg-[#ffffff5e]">
       <label htmlFor="car_id" className="py-4 px-2 flex flex-col gap-4 relative md:w-[20%] w-full">
         <span className="text-xl font-semibold text-gray-600">Select a car</span>
-        <select defaultValue="default" onChange={handleInput} name="car_id" id="car_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
-          <option disabled value="default">Select a car</option>
+        <select defaultValue="default" value={form.car_id} onChange={handleInput} name="car_id" id="car_id" className="w-full p-3 bg-white text-gray-800 border border-gray-200 rounded-md text-sm font-semibold focus-within:outline-none focus:ring-green-500 focus:border-green-500">
+          <option disabled value="default">{ carsLoading ? 'Loading...' : 'Select a car' }</option>
           { list && list.map((car) => (<option key={car.id} value={car.id}>{car.name}</option>)) }
         </select>
       </label>
@@ -141,7 +169,7 @@ const ReservationForm = () => {
         onClick={() => setIsPickUpCalendarOpen(true)}
         readOnly
       >
-        <div ref={pickUpCalendarRef} className={cn(`${isPickUpCalendarOpen ? 'block' : 'hidden'}`)}>
+        <div ref={pickUpCalendarRef} className={`${isPickUpCalendarOpen ? 'block' : 'hidden'}`}>
           <DayPicker
             showOutsideDays
             fromDate={today}
@@ -171,7 +199,7 @@ const ReservationForm = () => {
         value={form.ending_date?.toLocaleDateString() || ''}
         onClick={() => setIsReturnCalendarOpen(true)}
       >
-        <div ref={returnCalendarRef} className={cn(`${isReturnCalendarOpen ? 'block' : 'hidden'}`)}>
+        <div ref={returnCalendarRef} className={`${isReturnCalendarOpen ? 'block' : 'hidden'}`}>
           <DayPicker
             showOutsideDays
             fromDate={form.starting_date ?? today}
@@ -186,7 +214,7 @@ const ReservationForm = () => {
         </div>
       </Field>
       <div className="py-4 px-2 flex flex-col justify-end relative md:w-[14%] w-[200px] max-w-[60%] md:mx-0 mx-auto">
-        <button type="submit" className="p-3 bg-green-500 text-white rounded-md font-semibold">SUBMIT</button>
+        <button type="submit" className="p-3 bg-green-500 text-white rounded-md font-semibold duration-200 ease-in active:bg-[#1da64e]">SUBMIT</button>
       </div>
     </form>
   );
