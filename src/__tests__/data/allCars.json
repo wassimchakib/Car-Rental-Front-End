@@ -35,6 +35,153 @@
             "car_id": 10
           }
         ]
+      },
+      {
+        "id": 1,
+        "name": "MERCEDES BENZ G CLASS",
+        "description": "MERCEDES G63 AMG - SERIES 21: S21-02",
+        "color": "White",
+        "price": 210,
+        "year": "2021",
+        "car_type": "Sport",
+        "created_at": "2023-04-13T13:00:58.448Z",
+        "updated_at": "2023-04-13T13:00:58.448Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 1,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-611-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.499Z",
+            "updated_at": "2023-04-13T13:00:58.499Z",
+            "car_id": 1
+          },
+          {
+            "id": 2,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-602-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.527Z",
+            "updated_at": "2023-04-13T13:00:58.527Z",
+            "car_id": 1
+          },
+          {
+            "id": 3,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-613-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.546Z",
+            "updated_at": "2023-04-13T13:00:58.546Z",
+            "car_id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "MERCEDES BENZ S CLASS",
+        "description": "MERCEDES S580 - HYBRID FORGED SERIES: HF-4T",
+        "color": "Black",
+        "price": 120,
+        "year": "2022",
+        "car_type": "Coupe",
+        "created_at": "2023-04-13T13:00:58.568Z",
+        "updated_at": "2023-04-13T13:00:58.568Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 4,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-S580-Hybrid-Forged-Series-HF-4T-%C2%A9-Vossen-Wheels-2023-600-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.587Z",
+            "updated_at": "2023-04-13T13:00:58.587Z",
+            "car_id": 2
+          },
+          {
+            "id": 5,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-S580-Hybrid-Forged-Series-HF-4T-%C2%A9-Vossen-Wheels-2023-618-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.608Z",
+            "updated_at": "2023-04-13T13:00:58.608Z",
+            "car_id": 2
+          },
+          {
+            "id": 6,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-S580-Hybrid-Forged-Series-HF-4T-%C2%A9-Vossen-Wheels-2023-622-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.629Z",
+            "updated_at": "2023-04-13T13:00:58.629Z",
+            "car_id": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "CHEVROLET / GMC DENALI",
+        "description": "GMC SIERRA DENALI - HYBRID FORGED SERIES: HF6-4",
+        "color": "Black",
+        "price": 170,
+        "year": "2021",
+        "car_type": "Pickup",
+        "created_at": "2023-04-13T13:00:58.650Z",
+        "updated_at": "2023-04-13T13:00:58.650Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 7,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/GMC-Sierra-Denali-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2023-600-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.670Z",
+            "updated_at": "2023-04-13T13:00:58.670Z",
+            "car_id": 3
+          },
+          {
+            "id": 8,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/GMC-Sierra-Denali-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2023-614-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.691Z",
+            "updated_at": "2023-04-13T13:00:58.691Z",
+            "car_id": 3
+          },
+          {
+            "id": 9,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/GMC-Sierra-Denali-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2023-619-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.753Z",
+            "updated_at": "2023-04-13T13:00:58.753Z",
+            "car_id": 3
+          },
+          {
+            "id": 10,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/GMC-Sierra-Denali-Hybrid-Forged-Series-HF6-4-%C2%A9-Vossen-Wheels-2023-609-109x73.jpg",
+            "created_at": "2023-04-13T13:00:58.777Z",
+            "updated_at": "2023-04-13T13:00:58.777Z",
+            "car_id": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "FERRARI SF90",
+        "description": "FERRARI SF90 - NOVITEC X VOSSEN SERIES: NF10",
+        "color": "White",
+        "price": 320,
+        "year": "2019",
+        "car_type": "Sport",
+        "created_at": "2023-04-13T13:00:58.795Z",
+        "updated_at": "2023-04-13T13:00:58.795Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 11,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Ferrari-SF90-Novitec-x-Vossen-Series-NF10-%C2%A9-Vossen-Wheels-2023-3-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.814Z",
+            "updated_at": "2023-04-13T13:00:58.814Z",
+            "car_id": 4
+          },
+          {
+            "id": 12,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Ferrari-SF90-Novitec-x-Vossen-Series-NF10-%C2%A9-Vossen-Wheels-2023-1-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.837Z",
+            "updated_at": "2023-04-13T13:00:58.837Z",
+            "car_id": 4
+          },
+          {
+            "id": 13,
+            "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Ferrari-SF90-Novitec-x-Vossen-Series-NF10-%C2%A9-Vossen-Wheels-2023-2-1047x698.jpg",
+            "created_at": "2023-04-13T13:00:58.857Z",
+            "updated_at": "2023-04-13T13:00:58.857Z",
+            "car_id": 4
+          }
+        ]
       }
     ]
   }

@@ -1,0 +1,39 @@
+{
+  "data": {
+    "cars": {
+      "id": 1,
+      "name": "MERCEDES BENZ G CLASS",
+      "description": "MERCEDES G63 AMG - SERIES 21: S21-02",
+      "color": "White",
+      "price": 210,
+      "year": "2021",
+      "car_type": "Sport",
+      "created_at": "2023-04-13T13:00:58.448Z",
+      "updated_at": "2023-04-13T13:00:58.448Z",
+      "user_id": 1,
+      "images": [
+        {
+          "id": 1,
+          "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-611-1047x698.jpg",
+          "created_at": "2023-04-13T13:00:58.499Z",
+          "updated_at": "2023-04-13T13:00:58.499Z",
+          "car_id": 1
+        },
+        {
+          "id": 2,
+          "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-602-1047x698.jpg",
+          "created_at": "2023-04-13T13:00:58.527Z",
+          "updated_at": "2023-04-13T13:00:58.527Z",
+          "car_id": 1
+        },
+        {
+          "id": 3,
+          "url": "https://vossen2018.wpenginepowered.com/wp-content/uploads/2023/03/Mercedes-G63-AMG-Series-21-S21-02-%C2%A9-Vossen-Wheels-2023-613-1047x698.jpg",
+          "created_at": "2023-04-13T13:00:58.546Z",
+          "updated_at": "2023-04-13T13:00:58.546Z",
+          "car_id": 1
+        }
+      ]
+    }
+  }
+}

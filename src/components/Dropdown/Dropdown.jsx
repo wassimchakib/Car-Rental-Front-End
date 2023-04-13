@@ -20,7 +20,11 @@ Dropdown.propTypes = {
     PropTypes.number,
   ])).isRequired,
   onDrop: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+Dropdown.defaultProps = {
+  value: '',
 };
 
 export default Dropdown;
