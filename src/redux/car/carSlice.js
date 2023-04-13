@@ -69,7 +69,8 @@ export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
     },
   };
   try {
-    return await axios.delete(API_URL, requestOptions);
+    await axios.delete(API_URL, requestOptions);
+    return id;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }
@@ -155,12 +156,17 @@ const carSlice = createSlice({
       error: '',
     }));
 
-    builder.addCase(deleteCar.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      success: true,
-      id: action.payload.data.data,
-    }));
+    builder.addCase(deleteCar.fulfilled, (state, action) => {
+      const id = action.payload;
+
+      return {
+        ...state,
+        isLoading: false,
+        success: true,
+        id,
+        list: state.list.filter((car) => car.id !== id),
+      };
+    });
 
     builder.addCase(deleteCar.rejected, (state, action) => ({
       ...state,

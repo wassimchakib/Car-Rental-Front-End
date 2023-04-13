@@ -22,7 +22,6 @@ const CarCard = ({ item }) => {
 
   const handleConfirmClick = () => {
     dispatch(deleteCar(item.id));
-    dispatch(getCars());
     setIsModalOpen(false);
   };
 
