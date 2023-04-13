@@ -1,0 +1,44 @@
+{
+	"data": {
+		"reservations": [
+			{
+				"id": 1,
+				"city": "mexico city",
+				"starting_date": "2023-04-02",
+				"ending_date": "2023-04-04",
+				"created_at": "2023-04-11T09:41:59.784Z",
+				"updated_at": "2023-04-11T09:41:59.784Z",
+				"user_id": 1,
+				"car_id": 1,
+				"car": {
+					"name": "hyundai125",
+					"description": "hyundai",
+					"price": 59.0,
+					"images": [
+						{
+							"id": 1,
+							"url": "http://www.imgur.com/1",
+							"created_at": "2023-04-11T09:41:30.653Z",
+							"updated_at": "2023-04-11T09:41:30.653Z",
+							"car_id": 1
+						},
+						{
+							"id": 2,
+							"url": "http://www.imgur.com/2",
+							"created_at": "2023-04-11T09:41:30.653Z",
+							"updated_at": "2023-04-11T09:41:30.653Z",
+							"car_id": 1
+						},
+						{
+							"id": 3,
+							"url": "http://www.imgur.com/3",
+							"created_at": "2023-04-11T09:41:30.653Z",
+							"updated_at": "2023-04-11T09:41:30.653Z",
+							"car_id": 1
+						}
+					]
+				}
+			}
+		]
+	}
+}
