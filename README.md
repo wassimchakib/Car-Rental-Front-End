@@ -9,6 +9,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [ Kanban Board](#kanban-board)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -65,6 +66,28 @@ This is the Front-end of Car Rental App that allows users to reserve a car, add 
 
 Click [here](https://github.com/wassimchakib/Car-Rental-Back-End) to access the back end app that was built with react
 
+<!-- LIVE DEMO -->
+
+## Live Demo <a name="live-demo"></a>
+
+> To see the live demo, you can visit the links below:
+- [Netlify](https://dev--thunderous-peony-7ad000.netlify.app/)
+- [Vercel](https://car-rental-front-end.vercel.app/)
+- [Render](https://car-rental-front-end.onrender.com/)
+
+<!-- KANBAN BOARD -->
+
+## Kanban Board <a name="kanban-board"></a>
+
+### Before starting
+![image](https://user-images.githubusercontent.com/50754458/229162056-02f608c7-85bb-4730-83b0-a05739f9ee11.png)
+
+### After 1 iteration (Week)
+![image](https://user-images.githubusercontent.com/50754458/230520114-ea73d082-a77e-4646-8a32-3d757f0c41b9.png)
+
+### After 2 iteration (2nd Week)
+![image](https://user-images.githubusercontent.com/50754458/231893974-650f65b6-6c5c-4ded-b358-decca29f4e94.png)
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -111,9 +134,20 @@ Install this project with:
 ```sh
   npm install
 ```
+### Tests
 
+To test the project, run the following
+
+```sh
+  npm run test
+```
 ### Usage
 
+#### Create an .env file with the following:
+
+```
+REACT_APP_BASE_URL=yourlinktobackendapi
+```
 To run the project, execute the following command:
 
 `npm start`
