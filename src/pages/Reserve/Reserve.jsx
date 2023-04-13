@@ -1,8 +1,6 @@
-// import { SnackbarProvider } from 'notistack';
 import { useParams } from 'react-router-dom';
 import React from 'react';
 import ReservationForm from '../../components/ReservationForm/ReservationForm';
-// import Snackbar from '../../components/ui/Snackbar';
 import './reserve.css';
 
 const Reserve = () => {
