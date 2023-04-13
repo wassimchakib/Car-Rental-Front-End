@@ -60,6 +60,7 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   margin: 0 auto;
+  transition: all 0.2s ease-in;
 
   --tw-shadow:
     0 10px 15px -3px rgb(0 0 0 / 0.1),
@@ -74,12 +75,23 @@
     var(--tw-shadow);
 }
 
+.reservation-card:hover {
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 green;
+  -webkit-box-shadow: 0 3px 13px 0 green;
+  -moz-box-shadow: 0 3px 13px 0 green;
+}
+
 .car_img,
 .image-container {
   height: 200px;
   width: 300px;
   border-top-left-radius: 40px;
   border-bottom-right-radius: 40px;
+}
+
+.image-container {
+  position: relative;
 }
 
 .label {
@@ -89,9 +101,10 @@
   color: white;
   letter-spacing: 2px;
   font-weight: 900;
-  position: relative;
-  bottom: 195.5px;
-  left: 209px;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
   border-bottom-left-radius: 20px;
   text-align: center;
   font-size: 12px;

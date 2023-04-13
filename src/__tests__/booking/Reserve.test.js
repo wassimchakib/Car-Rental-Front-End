@@ -10,13 +10,15 @@ import { configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Reserve from '../../pages/Reserve/Reserve';
 import carSlice, { getCars } from '../../redux/car/carSlice';
-import cars from '../data/cars.json';
+import cars from '../data/allCars.json';
+import reservationSlice from '../../redux/reservation/reservationSlice';
 
 jest.mock('axios');
 
 const store = configureStore({
   reducer: {
     car: carSlice,
+    reservation: reservationSlice,
   },
 });
 

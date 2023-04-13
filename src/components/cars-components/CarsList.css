@@ -63,7 +63,7 @@
 
 .cardCol {
   min-width: 270px;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
 }
 
@@ -84,6 +84,7 @@
 }
 
 .carText {
+  min-height: 110px;
   border: 1px solid #98bf11;
   padding: 6px;
   border-bottom-left-radius: 5px;
@@ -91,7 +92,8 @@
 }
 
 .carTitle {
-  font-size: 18px;
+  font-size: 1.3rem;
+  text-align: right;
   font-weight: 500;
   padding: 8px 0;
 }
@@ -105,9 +107,8 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 26px;
-  margin: 90px;
+  margin: 90px 3rem;
   box-sizing: border-box;
-  background-color: rgb(233, 233, 233);
 }
 
 .carDetailsImage > img {
@@ -117,7 +118,7 @@
 
 .carDetailsInfo {
   margin-left: 28px;
-  width: 60%;
+  width: 45%;
 }
 
 .title {
@@ -155,6 +156,16 @@
   .carImg {
     height: 200px;
   }
+
+  .carDetails {
+    flex-direction: column;
+    margin: 30px 40px;
+  }
+
+  .carDetailsInfo {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (max-width: 1220px) {
@@ -163,13 +174,18 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 650px) {
   .cardGrid {
     grid-template-columns: 1fr;
   }
 
   .carListTitle {
     padding: 8px;
+  }
+
+  .cardCol {
+    width: 80%;
+    min-width: 290px;
   }
 
   .carDetails {

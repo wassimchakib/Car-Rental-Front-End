@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import Container from 'react-bootstrap/Container';
 import CarCard from './CarCard';
-import items from './cars';
 import './CarsList.css';
+import { getCars } from '../../redux/car/carSlice';
 
 const CarList = ({ itemsPerPage }) => {
+  const { list } = useSelector((state) => state.car);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCars());
+  }, [dispatch]);
+
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
@@ -14,22 +21,22 @@ const CarList = ({ itemsPerPage }) => {
   useEffect(() => {
     // fetch data from API later
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(items.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(items.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+    setCurrentItems(list.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(list.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, list]);
 
   // pagination next/prev handler
   const handlePageClick = (event) => {
-    const newOffset = (event.selected * itemsPerPage) % items.length;
+    const newOffset = (event.selected * itemsPerPage) % list.length;
     setItemOffset(newOffset);
   };
 
   return (
     <div className="carWrapper">
       <h1 className="carListTitle">Your Luxury Car for your Comfort</h1>
-      <Container className="cardContainer">
+      <div className="cardContainer">
         <CarCard currentItems={currentItems} />
-      </Container>
+      </div>
 
       {/* pagination */}
       <div className="paginationContainer">
@@ -54,7 +61,6 @@ const CarList = ({ itemsPerPage }) => {
           renderOnZeroPageCount={null}
         />
       </div>
-
     </div>
   );
 };
