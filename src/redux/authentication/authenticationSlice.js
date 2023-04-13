@@ -6,9 +6,11 @@ const LOGIN = 'car-rental/authentication/LOGIN';
 // Initialize token from local storage
 const token = localStorage.getItem('token') || null;
 
+// Base URL
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 // Method getToken
 export const getToken = createAsyncThunk(LOGIN, async (username, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/login';
+  const API_URL = `${BASE_URL}/login`;
   const requestOptions = {
     method: 'POST',
     headers: {
@@ -40,6 +42,7 @@ const authenticationSlice = createSlice({
         success: false,
         error: '',
         token: '',
+        username: '',
       };
     },
   },
@@ -57,6 +60,7 @@ const authenticationSlice = createSlice({
         isLoading: false,
         success: true,
         token: action.payload.data.token,
+        username: action.payload.data.username,
       };
     });
 

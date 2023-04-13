@@ -3,9 +3,12 @@ import axios from 'axios';
 
 const LOGIN = 'car-rental/registration/SIGNUP';
 
+// BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 // Method register
 export const register = createAsyncThunk(LOGIN, async (username, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/signup';
+  const API_URL = `${BASE_URL}/signup`;
   const requestOptions = {
     method: 'POST',
     headers: {

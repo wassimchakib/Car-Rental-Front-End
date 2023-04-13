@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { enqueueSnackbar } from 'notistack';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
 import Images from '../../components/Images/Images';
 import FormErrors from '../../components/ui/FormErrors';
-import { addCar } from '../../redux/car/carSlice';
+import { addCar, resetErrors } from '../../redux/car/carSlice';
 
 const AddCar = () => {
   const YEARS = (start = 2015, stop = new Date().getFullYear()) => Array.from(
@@ -32,6 +33,20 @@ const AddCar = () => {
   };
   const [formInfo, setFormInfo] = useState(formInfoState);
   const dispatch = useDispatch();
+  const { response } = useSelector((state) => state.car);
+
+  useEffect(() => {
+    if (response?.car_id) {
+      enqueueSnackbar('Car added successfully', {
+        variant: 'success',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
+    }
+
+    return () => dispatch(resetErrors());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
 
   const validateField = (fieldName, fieldValue) => {
     const { formErrors } = formInfo.validations;
@@ -105,7 +120,6 @@ const AddCar = () => {
   // Car form
   const carForm = () => (
     <>
-      <h2>Add A Car</h2>
       <FormErrors
         formErrors={formInfo.validations.formErrors}
       />
@@ -130,7 +144,7 @@ const AddCar = () => {
   return (
     <section id="add_car">
       <div className="form__container">
-        { carForm() }
+        {carForm()}
       </div>
     </section>
   );

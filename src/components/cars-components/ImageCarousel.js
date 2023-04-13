@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Carousel } from 'flowbite-react';
 
 const ImageCarousel = ({ images, altText }) => (
-  <div className="h-[300px] xs:h-[400px] sm:h-[450px] md:h-[450px]">
+  <div className="h-[300px] xs:h-[400px] lg:h-[60vh] xlg:h-[70vh] sm:h-[450px] md:h-[450px]">
     <Carousel slideInterval={3000}>
       {images && images.map((image) => (
         <img

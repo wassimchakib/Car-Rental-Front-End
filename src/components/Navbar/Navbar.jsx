@@ -12,11 +12,15 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
   const showNavBar = () => {
-    navRef.current.classList.toggle('responsive_nav');
+    if (window.innerWidth < 680) {
+      navRef.current.classList.toggle('responsive_nav');
+    }
   };
 
   const hideNavBar = () => {
-    navRef.current.classList.toggle('responsive_nav');
+    if (window.innerWidth < 680) {
+      navRef.current.classList.toggle('responsive_nav');
+    }
   };
 
   const handleClick = () => {

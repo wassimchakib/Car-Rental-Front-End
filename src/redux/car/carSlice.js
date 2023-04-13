@@ -6,9 +6,11 @@ const SHOW_CAR = 'car-rental/car/SHOW/:id';
 const ADD_CAR = 'car-rental/car/ADD';
 const DELETE_CAR = 'car-rental/car/DELETE';
 
+// Base Url
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 // Method getCars
-export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/cars';
+export const getCars = createAsyncThunk(SHOW_CARS, async (filter = null, thunkAPI) => {
+  const API_URL = filter === true ? `${BASE_URL}/api/v1/cars?filter=true` : `${BASE_URL}/api/v1/cars`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -24,7 +26,7 @@ export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
 });
 
 export const getCar = createAsyncThunk(SHOW_CAR, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
+  const API_URL = `${BASE_URL}/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -41,7 +43,7 @@ export const getCar = createAsyncThunk(SHOW_CAR, async (id, thunkAPI) => {
 
 // Method AddCar
 export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/cars';
+  const API_URL = `${BASE_URL}/api/v1/cars`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'POST',
@@ -58,7 +60,7 @@ export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
 
 // Method Delete Car
 export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
+  const API_URL = `${BASE_URL}/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
@@ -67,7 +69,8 @@ export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
     },
   };
   try {
-    return await axios.delete(API_URL, requestOptions);
+    await axios.delete(API_URL, requestOptions);
+    return id;
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response.data.error);
   }
@@ -82,6 +85,16 @@ const carSlice = createSlice({
     error: '',
     list: [],
     car: null,
+    response: null,
+  },
+  reducers: {
+    resetErrors: (state) => ({
+      ...state,
+      error: '',
+      isLoading: false,
+      success: false,
+      response: null,
+    }),
   },
   extraReducers: (builder) => {
     // Get Cars
@@ -153,12 +166,17 @@ const carSlice = createSlice({
       error: '',
     }));
 
-    builder.addCase(deleteCar.fulfilled, (state, action) => ({
-      ...state,
-      isLoading: false,
-      success: true,
-      id: action.payload.data.data,
-    }));
+    builder.addCase(deleteCar.fulfilled, (state, action) => {
+      const id = action.payload;
+
+      return {
+        ...state,
+        isLoading: false,
+        success: true,
+        id,
+        list: state.list.filter((car) => car.id !== id),
+      };
+    });
 
     builder.addCase(deleteCar.rejected, (state, action) => ({
       ...state,
@@ -169,3 +187,4 @@ const carSlice = createSlice({
 });
 
 export default carSlice.reducer;
+export const { resetErrors } = carSlice.actions;
