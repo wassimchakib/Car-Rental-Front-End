@@ -5,9 +5,12 @@ const SHOW_RESERVATIONS = 'car-rental/reservation/SHOW';
 const ADD_RESERVATION = 'car-rental/reservation/ADD';
 const DELETE_RESERVATION = 'car-rental/reservation/DELETE';
 
+// Base URL
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 // Method getReservations
 export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/reservations';
+  const API_URL = `${BASE_URL}/api/v1/reservations`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -24,7 +27,7 @@ export const getReservations = createAsyncThunk(SHOW_RESERVATIONS, async (thunkA
 
 // Method AddReservation
 export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservation, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/reservations';
+  const API_URL = `${BASE_URL}/api/v1/reservations`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'POST',
@@ -41,7 +44,7 @@ export const addReservation = createAsyncThunk(ADD_RESERVATION, async (reservati
 
 // Method DeleteReservation
 export const deleteReservation = createAsyncThunk(DELETE_RESERVATION, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:1800/api/v1/reservations/${id}`;
+  const API_URL = `${BASE_URL}/api/v1/reservations/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',

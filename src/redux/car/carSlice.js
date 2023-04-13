@@ -6,9 +6,11 @@ const SHOW_CAR = 'car-rental/car/SHOW/:id';
 const ADD_CAR = 'car-rental/car/ADD';
 const DELETE_CAR = 'car-rental/car/DELETE';
 
+// Base Url
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 // Method getCars
 export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/cars';
+  const API_URL = `${BASE_URL}/api/v1/cars`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -24,7 +26,7 @@ export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
 });
 
 export const getCar = createAsyncThunk(SHOW_CAR, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
+  const API_URL = `${BASE_URL}/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
@@ -41,7 +43,7 @@ export const getCar = createAsyncThunk(SHOW_CAR, async (id, thunkAPI) => {
 
 // Method AddCar
 export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
-  const API_URL = 'http://localhost:1800/api/v1/cars';
+  const API_URL = `${BASE_URL}/api/v1/cars`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'POST',
@@ -58,7 +60,7 @@ export const addCar = createAsyncThunk(ADD_CAR, async (car, thunkAPI) => {
 
 // Method Delete Car
 export const deleteCar = createAsyncThunk(DELETE_CAR, async (id, thunkAPI) => {
-  const API_URL = `http://localhost:1800/api/v1/cars/${id}`;
+  const API_URL = `${BASE_URL}/api/v1/cars/${id}`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'DELETE',
