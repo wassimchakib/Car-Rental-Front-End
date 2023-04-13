@@ -10,24 +10,16 @@ import { configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Reserve from '../../pages/Reserve/Reserve';
 import carSlice, { getCars } from '../../redux/car/carSlice';
-import cars from '../data/cars.json';
+import cars from '../data/allCars.json';
+import reservationSlice from '../../redux/reservation/reservationSlice';
 
 jest.mock('axios');
 
 const store = configureStore({
   reducer: {
     car: carSlice,
+    reservation: reservationSlice,
   },
-  preloadedState: { 
-   car: {
-    isLoading: false,
-    success: false,
-    error: '',
-    list: [],
-    car: null,
-    response: null
-   }
-  }
 });
 
 describe('Reserve page', () => {
@@ -53,12 +45,9 @@ describe('Reserve page', () => {
   ];
 
   it('should have a cars dropdown', async () => {
-    const state = store.getState()
-    expect(state).toBe(null)
     await waitFor(() => {
       const cityFieldLabel = screen.getByLabelText(/Select a car/i);
       expect(cityFieldLabel).toBeInTheDocument();
-
 
       const carDropdown = screen.queryByRole('combobox', { name: 'Select a car' });
       expect(carDropdown).toBeInTheDocument();

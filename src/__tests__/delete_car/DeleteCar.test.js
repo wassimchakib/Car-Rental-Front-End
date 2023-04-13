@@ -17,7 +17,13 @@ const store = configureStore({
 
 describe('DeleteCar page', () => {
   beforeEach(async () => {
-    axios.get.mockResolvedValue({ data: cars });
+    axios.get.mockResolvedValue({
+      data: {
+        data: {
+          cars: [cars.data.cars[0]],
+        },
+      },
+    });
     await act(() => store.dispatch(getCars()));
   });
 

@@ -7,7 +7,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import axios from 'axios';
 import carSlice, { getCars } from '../../redux/car/carSlice';
 import AddCar from '../../pages/AddCar/AddCar';
-import cars from '../data/cars.json';
+import cars from '../data/allCars.json';
 
 jest.mock('axios');
 
