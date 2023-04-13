@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Modal from './Modal';
-import { deleteCar, getCars } from '../../redux/car/carSlice';
+import { deleteCar } from '../../redux/car/carSlice';
 
 const CarCard = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

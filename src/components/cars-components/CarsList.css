@@ -107,7 +107,7 @@
 }
 
 .carDetails {
-  @apply mt-[70px] mx-0 xs:mt-[70px] sm:mt-[100px] md:mt-[70px] sm:mx-[1.5rem] md:mx-[3rem] flex flex-row justify-between p-[26px] box-border
+  @apply mt-[70px] mx-0 xs:mt-[70px] sm:mt-[100px] md:mt-[70px] sm:mx-[1.5rem] md:mx-[3rem] flex flex-row justify-between p-[26px] box-border;
 }
 
 .carDetailsImage > img {
@@ -140,7 +140,7 @@
 }
 
 .reserveBtn {
-  @apply bg-[#98BF11] text-white rounded-md uppercase text-xl duration-200 ease-in focus:ring-1 focus:ring-green-200 px-4 py-3 hover:bg-lime-600 self-end md:mt-[13rem] sm:mt-0
+  @apply bg-[#98BF11] text-white rounded-md uppercase text-xl duration-200 ease-in focus:ring-1 focus:ring-green-200 px-4 py-3 hover:bg-lime-600 self-end md:mt-[13rem] sm:mt-0;
 }
 
 /* mobile responsive design style */
