@@ -85,6 +85,16 @@ const carSlice = createSlice({
     error: '',
     list: [],
     car: null,
+    response: null,
+  },
+  reducers: {
+    resetErrors: (state) => ({
+      ...state,
+      error: '',
+      isLoading: false,
+      success: false,
+      response: null,
+    }),
   },
   extraReducers: (builder) => {
     // Get Cars
@@ -177,3 +187,4 @@ const carSlice = createSlice({
 });
 
 export default carSlice.reducer;
+export const { resetErrors } = carSlice.actions;
