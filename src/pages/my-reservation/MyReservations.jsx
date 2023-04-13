@@ -21,10 +21,9 @@ const MyReservations = () => {
   const showLoading = (isLoading) => {
     if (isLoading) {
       return (
-        <div className="w-[100%] flex justify-center items-center mt-6">
+        <div>
           <PuffLoader
-            color="#98BF11"
-            size={60}
+            size={80}
             speedMultiplier={1}
           />
         </div>
@@ -38,7 +37,7 @@ const MyReservations = () => {
   };
 
   return (
-    <div className={!isLoading ? 'card-container' : ''}>
+    <div className={!isLoading ? 'card-container' : 'absolute left-[50%] top-[40%] translate-x-[-50%] ss:mt-[5rem] xs:mt-[5rem] sm:mt-0 md:mt-0'}>
       {showLoading(isLoading)}
     </div>
   );
