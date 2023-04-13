@@ -42,6 +42,7 @@ const authenticationSlice = createSlice({
         success: false,
         error: '',
         token: '',
+        username: '',
       };
     },
   },
@@ -59,6 +60,7 @@ const authenticationSlice = createSlice({
         isLoading: false,
         success: true,
         token: action.payload.data.token,
+        username: action.payload.data.username,
       };
     });
 

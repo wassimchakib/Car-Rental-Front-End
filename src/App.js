@@ -1,9 +1,10 @@
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
   BrowserRouter, Route, Routes, Navigate,
 } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
+import { enqueueSnackbar, SnackbarProvider } from 'notistack';
 import MyReservations from './pages/my-reservation/MyReservations';
 import DeleteCar from './pages/delete-car/DeleteCar';
 import Navbar from './components/Navbar/Navbar';
@@ -11,14 +12,29 @@ import Reserve from './pages/Reserve/Reserve';
 import AddCar from './pages/AddCar/AddCar';
 import CarList from './components/cars-components/CarList';
 import CarDetails from './components/cars-components/CarDetails';
-import store from './redux/store';
 import ProtectedRoute from './routing/ProtectedRoute';
+import Snackbar from './components/ui/Snackbar';
 
 const App = () => {
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
   ]);
+
+  const { username } = useSelector((state) => state.authentication);
+
+  useEffect(() => {
+    if (username) {
+      const capitalName = username.charAt(0).toUpperCase() + username.slice(1);
+      enqueueSnackbar(`Welcome ${capitalName}`, {
+        variant: 'success',
+        TransitionProps: { direction: 'down' },
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [username]);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -46,10 +62,10 @@ const App = () => {
   };
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Navbar />
-        <div className="container">
+    <BrowserRouter>
+      <Navbar />
+      <div className="container">
+        <SnackbarProvider Components={{ errorMessage: Snackbar }} autoHideDuration={2500}>
           <Routes>
             <Route element={<ProtectedRoute />}>
               <Route exact path="/" element={<Navigate to="/cars" />} />
@@ -70,9 +86,9 @@ const App = () => {
               <Route exact path="/delete" element={<DeleteCar />} />
             </Route>
           </Routes>
-        </div>
-      </BrowserRouter>
-    </Provider>
+        </SnackbarProvider>
+      </div>
+    </BrowserRouter>
   );
 };
 

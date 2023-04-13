@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SnackbarProvider, enqueueSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 import './index.css';
 import Input from '../../components/Input/Input';
 import Dropdown from '../../components/Dropdown/Dropdown';
@@ -119,7 +119,7 @@ const AddCar = () => {
 
   // Car form
   const carForm = () => (
-    <SnackbarProvider autoHideDuration={2500}>
+    <>
       <FormErrors
         formErrors={formInfo.validations.formErrors}
       />
@@ -138,7 +138,7 @@ const AddCar = () => {
         />
         <input type="submit" value="Submit" />
       </form>
-    </SnackbarProvider>
+    </>
   );
 
   return (
