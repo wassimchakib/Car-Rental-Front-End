@@ -18,6 +18,16 @@ const store = configureStore({
   reducer: {
     car: carSlice,
   },
+  preloadedState: { 
+   car: {
+    isLoading: false,
+    success: false,
+    error: '',
+    list: [],
+    car: null,
+    response: null
+   }
+  }
 });
 
 describe('Reserve page', () => {
@@ -43,9 +53,12 @@ describe('Reserve page', () => {
   ];
 
   it('should have a cars dropdown', async () => {
+    const state = store.getState()
+    expect(state).toBe(null)
     await waitFor(() => {
       const cityFieldLabel = screen.getByLabelText(/Select a car/i);
       expect(cityFieldLabel).toBeInTheDocument();
+
 
       const carDropdown = screen.queryByRole('combobox', { name: 'Select a car' });
       expect(carDropdown).toBeInTheDocument();
