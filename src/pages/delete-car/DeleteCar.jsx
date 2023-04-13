@@ -13,7 +13,7 @@ const DeleteCar = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCars());
+    dispatch(getCars(true));
   }, [dispatch]);
 
   const showListOfCars = () => (list.map(

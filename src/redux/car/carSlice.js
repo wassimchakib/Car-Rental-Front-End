@@ -9,8 +9,8 @@ const DELETE_CAR = 'car-rental/car/DELETE';
 // Base Url
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 // Method getCars
-export const getCars = createAsyncThunk(SHOW_CARS, async (thunkAPI) => {
-  const API_URL = `${BASE_URL}/api/v1/cars`;
+export const getCars = createAsyncThunk(SHOW_CARS, async (filter = null, thunkAPI) => {
+  const API_URL = filter === true ? `${BASE_URL}/api/v1/cars?filter=true` : `${BASE_URL}/api/v1/cars`;
   const token = localStorage.getItem('token');
   const requestOptions = {
     method: 'GET',
