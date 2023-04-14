@@ -79,6 +79,8 @@ Click [here](https://github.com/wassimchakib/Car-Rental-Back-End) to access the 
 
 ## Kanban Board <a name="kanban-board"></a>
 
+- [Link to board](https://github.com/users/wassimchakib/projects/13)
+
 ### Before starting
 ![image](https://user-images.githubusercontent.com/50754458/229162056-02f608c7-85bb-4730-83b0-a05739f9ee11.png)
 
